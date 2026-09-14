@@ -4591,3 +4591,57 @@ footer p {
   }
 
 }
+
+/* =========================================
+   PROOF LAYER — INTERACTION STATES
+========================================= */
+
+.proof-terminal {
+  transition:
+    transform .25s ease,
+    box-shadow .5s ease,
+    border-color .5s ease;
+}
+
+.proof-terminal.proof-live {
+  border-color:
+    rgba(242,106,33,.5);
+
+  box-shadow:
+    0 50px 120px rgba(0,0,0,.65),
+    0 0 90px rgba(242,106,33,.10);
+}
+
+.proof-stage-row {
+  opacity: .35;
+
+  transform:
+    translateY(8px);
+
+  transition:
+    opacity .7s ease var(--proof-delay),
+    transform .7s
+      cubic-bezier(.22,1,.36,1)
+      var(--proof-delay);
+}
+
+.proof-stage-row.proof-row-active {
+  opacity: 1;
+
+  transform:
+    translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .proof-stage-row {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .proof-terminal {
+    transition: none;
+  }
+
+}
