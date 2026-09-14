@@ -76,8 +76,10 @@ document.addEventListener("DOMContentLoaded", () => {
   );
 
   revealItems.forEach((item) => {
+
     item.classList.add("reveal");
     revealObserver.observe(item);
+
   });
 
 
@@ -86,7 +88,10 @@ document.addEventListener("DOMContentLoaded", () => {
   ========================================= */
 
   document.querySelectorAll(".flow-stage").forEach((stage, index) => {
-    stage.style.transitionDelay = `${index * 120}ms`;
+
+    stage.style.transitionDelay =
+      `${index * 120}ms`;
+
   });
 
 
@@ -94,10 +99,14 @@ document.addEventListener("DOMContentLoaded", () => {
      HERO HASH MOTION
   ========================================= */
 
-  const hashes = document.querySelectorAll(".hash");
+  const hashes =
+    document.querySelectorAll(".hash");
 
   hashes.forEach((hash, index) => {
-    hash.style.animationDelay = `${index * 1.1}s`;
+
+    hash.style.animationDelay =
+      `${index * 1.1}s`;
+
   });
 
 
@@ -105,11 +114,21 @@ document.addEventListener("DOMContentLoaded", () => {
      PRIVACY TRANSFORMATION
   ========================================= */
 
-  const privacyCard = document.querySelector("#privacyCard");
-  const privacyToggle = document.querySelector("#privacyToggle");
-  const privacyStatus = document.querySelector("#privacyStatus");
-  const proofState = document.querySelector("#proofState");
-  const toggleText = document.querySelector(".toggle-text");
+  const privacyCard =
+    document.querySelector("#privacyCard");
+
+  const privacyToggle =
+    document.querySelector("#privacyToggle");
+
+  const privacyStatus =
+    document.querySelector("#privacyStatus");
+
+  const proofState =
+    document.querySelector("#proofState");
+
+  const toggleText =
+    document.querySelector(".toggle-text");
+
 
   if (privacyCard && privacyToggle) {
 
@@ -123,7 +142,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
       setTimeout(() => {
+
         privacyCard.classList.remove("protecting");
+
       }, 1000);
 
 
@@ -131,24 +152,31 @@ document.addEventListener("DOMContentLoaded", () => {
 
         privacyCard.classList.add("protected");
 
+
         privacyStatus.innerHTML =
           "<i></i> PRIVATE";
+
 
         proofState.textContent =
           "VALID";
 
+
         toggleText.textContent =
           "REVEAL TRANSACTION";
+
 
       } else {
 
         privacyCard.classList.remove("protected");
 
+
         privacyStatus.innerHTML =
           "<i></i> PUBLIC";
 
+
         proofState.textContent =
           "VISIBLE";
+
 
         toggleText.textContent =
           "PROTECT TRANSACTION";
@@ -161,54 +189,31 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* =========================================
-     SMOOTH SCROLL
-  ========================================= */
-
-  document.querySelectorAll('a[href^="#"]').forEach((link) => {
-
-    link.addEventListener("click", (e) => {
-
-      const targetId = link.getAttribute("href");
-
-      if (!targetId || targetId === "#") return;
-
-      const target = document.querySelector(targetId);
-
-      if (!target) return;
-
-      e.preventDefault();
-
-      target.scrollIntoView({
-        behavior: "smooth",
-        block: "start"
-      });
-
-    });
-
-  });
-
-});
-
-  /* =========================================
      SECTION 02 — PROOF PIPELINE
   ========================================= */
 
-  const pipelineStages = document.querySelectorAll(
-    ".proof-flow .flow-stage"
-  );
+  const pipelineStages =
+    document.querySelectorAll(
+      ".proof-flow .flow-stage"
+    );
 
-  const pipelineConnectors = document.querySelectorAll(
-    ".proof-flow .flow-connector"
-  );
+  const pipelineConnectors =
+    document.querySelectorAll(
+      ".proof-flow .flow-connector"
+    );
 
   const approachBottom =
     document.querySelector(".approach-bottom");
 
   let activeStage = 0;
 
+
   function activatePipeline(stageNumber) {
 
     activeStage = stageNumber;
+
+
+    /* Activate selected stage */
 
     pipelineStages.forEach((stage) => {
 
@@ -222,6 +227,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     });
 
+
+    /* Activate connector after selected stage */
+
     pipelineConnectors.forEach((connector) => {
 
       const number =
@@ -233,6 +241,9 @@ document.addEventListener("DOMContentLoaded", () => {
       );
 
     });
+
+
+    /* Complete statement after stage 03 */
 
     if (
       approachBottom &&
@@ -254,6 +265,10 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
+  /* =========================================
+     STAGE CLICK / TAP
+  ========================================= */
+
   pipelineStages.forEach((stage) => {
 
     stage.addEventListener("click", () => {
@@ -268,10 +283,14 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 
-  /* Start the sequence when Section 02 enters view */
+  /* =========================================
+     START SECTION 02
+     WHEN IT ENTERS VIEW
+  ========================================= */
 
   const approachSection =
     document.querySelector("#approach");
+
 
   if (approachSection) {
 
@@ -295,9 +314,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
         },
         {
-          threshold: .35
+          threshold: 0.35
         }
       );
+
 
     approachObserver.observe(
       approachSection
@@ -310,21 +330,31 @@ document.addEventListener("DOMContentLoaded", () => {
      SMOOTH SCROLL
   ========================================= */
 
-  document.querySelectorAll('a[href^="#"]').forEach((link) => {
+  document.querySelectorAll(
+    'a[href^="#"]'
+  ).forEach((link) => {
 
     link.addEventListener("click", (e) => {
 
       const targetId =
         link.getAttribute("href");
 
-      if (!targetId || targetId === "#") return;
+
+      if (
+        !targetId ||
+        targetId === "#"
+      ) return;
+
 
       const target =
         document.querySelector(targetId);
 
+
       if (!target) return;
 
+
       e.preventDefault();
+
 
       target.scrollIntoView({
         behavior: "smooth",
