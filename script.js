@@ -499,3 +499,136 @@ walkthroughSteps.forEach((step) => {
   });
 
 });
+
+/* =========================================
+   SECTION 04 — PROOF LAYER
+========================================= */
+
+const proofSection =
+  document.querySelector("#proof");
+
+const proofTerminal =
+  document.querySelector(".proof-terminal");
+
+const proofRows =
+  document.querySelectorAll(
+    ".proof-stage-row"
+  );
+
+let proofActivated = false;
+
+
+/* =========================================
+   ACTIVATE PROOF SEQUENCE
+========================================= */
+
+function activateProofLayer() {
+
+  if (!proofTerminal || proofActivated) {
+    return;
+  }
+
+  proofActivated = true;
+
+  proofTerminal.classList.add(
+    "proof-live"
+  );
+
+
+  /* Sequential reveal */
+
+  proofRows.forEach((row, index) => {
+
+    row.style.setProperty(
+      "--proof-delay",
+      `${index * 450}ms`
+    );
+
+    row.classList.add(
+      "proof-row-active"
+    );
+
+  });
+
+}
+
+
+/* =========================================
+   START WHEN SECTION ENTERS VIEW
+========================================= */
+
+if (proofSection) {
+
+  const proofObserver =
+    new IntersectionObserver(
+      (entries) => {
+
+        entries.forEach((entry) => {
+
+          if (entry.isIntersecting) {
+
+            activateProofLayer();
+
+            proofObserver.unobserve(
+              entry.target
+            );
+
+          }
+
+        });
+
+      },
+      {
+        threshold: 0.35
+      }
+    );
+
+  proofObserver.observe(
+    proofSection
+  );
+
+}
+
+
+/* =========================================
+   SUBTLE TERMINAL RESPONSE
+========================================= */
+
+if (proofTerminal) {
+
+  proofTerminal.addEventListener(
+    "mousemove",
+    (e) => {
+
+      const rect =
+        proofTerminal.getBoundingClientRect();
+
+      const x =
+        (e.clientX - rect.left)
+        / rect.width
+        - .5;
+
+      const y =
+        (e.clientY - rect.top)
+        / rect.height
+        - .5;
+
+      proofTerminal.style.transform =
+        `perspective(1200px)
+         rotateY(${x * 2}deg)
+         rotateX(${y * -2}deg)`;
+
+    }
+  );
+
+
+  proofTerminal.addEventListener(
+    "mouseleave",
+    () => {
+
+      proofTerminal.style.transform = "";
+
+    }
+  );
+
+}
