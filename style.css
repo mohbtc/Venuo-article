@@ -1947,3 +1947,322 @@ footer p {
     align-items: flex-start;
   }
 }
+
+/* =========================================
+   VENUO — HERO MOTION
+========================================= */
+
+
+/* -----------------------------------------
+   HERO REVEAL
+----------------------------------------- */
+
+.hero-copy {
+  animation: heroCopyReveal 1.1s cubic-bezier(.22,1,.36,1) both;
+}
+
+.transaction-scene {
+  animation: sceneReveal 1.3s cubic-bezier(.22,1,.36,1) .15s both;
+}
+
+@keyframes heroCopyReveal {
+
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+}
+
+@keyframes sceneReveal {
+
+  from {
+    opacity: 0;
+    transform: translateY(25px) scale(.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+}
+
+
+/* -----------------------------------------
+   WALLET MOTION
+----------------------------------------- */
+
+.wallet {
+  transition:
+    transform .45s cubic-bezier(.22,1,.36,1),
+    border-color .3s ease,
+    box-shadow .3s ease;
+}
+
+.wallet-a {
+  animation: walletPulse 4s ease-in-out infinite;
+}
+
+.wallet-b {
+  animation: walletPulse 4s ease-in-out 1.8s infinite;
+}
+
+@keyframes walletPulse {
+
+  0%,
+  100% {
+    box-shadow:
+      0 20px 60px rgba(0,0,0,.4),
+      0 0 0 rgba(242,106,33,0);
+  }
+
+  50% {
+    box-shadow:
+      0 20px 60px rgba(0,0,0,.4),
+      0 0 30px rgba(242,106,33,.07);
+  }
+
+}
+
+
+/* -----------------------------------------
+   LIVE STATUS
+----------------------------------------- */
+
+.wallet-live {
+  animation: liveBlink 2s ease-in-out infinite;
+}
+
+@keyframes liveBlink {
+
+  0%,
+  100% {
+    opacity: .55;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+}
+
+
+/* -----------------------------------------
+   PROOF NODE
+----------------------------------------- */
+
+.proof-node {
+  animation: proofFloat 5s ease-in-out infinite;
+}
+
+@keyframes proofFloat {
+
+  0%,
+  100% {
+    margin-top: 0;
+  }
+
+  50% {
+    margin-top: -7px;
+  }
+
+}
+
+
+/* -----------------------------------------
+   PROOF RINGS
+----------------------------------------- */
+
+.proof-ring.ring-one {
+  animation: ringRotate 12s linear infinite;
+}
+
+.proof-ring.ring-two {
+  animation: ringRotateReverse 9s linear infinite;
+}
+
+@keyframes ringRotate {
+
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+
+}
+
+@keyframes ringRotateReverse {
+
+  from {
+    transform: rotate(360deg);
+  }
+
+  to {
+    transform: rotate(0deg);
+  }
+
+}
+
+
+/* -----------------------------------------
+   PROOF CORE
+----------------------------------------- */
+
+.proof-core {
+  animation: proofCorePulse 3s ease-in-out infinite;
+}
+
+@keyframes proofCorePulse {
+
+  0%,
+  100% {
+    box-shadow:
+      0 0 0 rgba(242,106,33,0);
+  }
+
+  50% {
+    box-shadow:
+      0 0 35px rgba(242,106,33,.18);
+  }
+
+}
+
+
+/* -----------------------------------------
+   TRANSACTION PARTICLES
+----------------------------------------- */
+
+.flow-one .particle {
+  animation:
+    particleTravelOne 2.8s ease-in-out infinite;
+}
+
+.flow-two .particle {
+  animation:
+    particleTravelTwo 2.8s ease-in-out 1.4s infinite;
+}
+
+@keyframes particleTravelOne {
+
+  0% {
+    left: 0;
+    opacity: 0;
+    transform: scale(.6);
+  }
+
+  15% {
+    opacity: 1;
+  }
+
+  70% {
+    opacity: 1;
+  }
+
+  100% {
+    left: 100%;
+    opacity: 0;
+    transform: scale(1);
+  }
+
+}
+
+@keyframes particleTravelTwo {
+
+  0% {
+    left: 0;
+    opacity: 0;
+    transform: scale(.6);
+  }
+
+  15% {
+    opacity: 1;
+  }
+
+  70% {
+    opacity: 1;
+  }
+
+  100% {
+    left: 100%;
+    opacity: 0;
+    transform: scale(1);
+  }
+
+}
+
+
+/* -----------------------------------------
+   HASH FRAGMENTS
+----------------------------------------- */
+
+.hash {
+  animation:
+    hashFloat 5s ease-in-out infinite;
+}
+
+.hash-two {
+  animation-duration: 6.5s;
+}
+
+.hash-three {
+  animation-duration: 4.5s;
+}
+
+@keyframes hashFloat {
+
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: .45;
+  }
+
+  50% {
+    transform: translateY(-8px);
+    opacity: .8;
+  }
+
+}
+
+
+/* -----------------------------------------
+   SCROLL REVEALS
+----------------------------------------- */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(35px);
+  transition:
+    opacity .8s ease,
+    transform .8s cubic-bezier(.22,1,.36,1);
+}
+
+.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* -----------------------------------------
+   REDUCED MOTION
+----------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+}
