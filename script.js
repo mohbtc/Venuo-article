@@ -1,92 +1,144 @@
 /* =========================================
-   VENUO — INTERACTION LAYER
+   VENUO — MOTION SYSTEM
 ========================================= */
 
 document.addEventListener("DOMContentLoaded", () => {
 
   /* -----------------------------------------
-     Cursor movement
+     HERO TRANSACTION MOTION
   ----------------------------------------- */
 
   const scene = document.querySelector(".transaction-scene");
+  const walletA = document.querySelector(".wallet-a");
+  const walletB = document.querySelector(".wallet-b");
+  const proofNode = document.querySelector(".proof-node");
 
   if (scene) {
-    scene.addEventListener("mousemove", (event) => {
+
+    /* Subtle cursor interaction */
+
+    scene.addEventListener("mousemove", (e) => {
 
       const rect = scene.getBoundingClientRect();
 
-      const x = (event.clientX - rect.left) / rect.width;
-      const y = (event.clientY - rect.top) / rect.height;
+      const x = (e.clientX - rect.left) / rect.width - 0.5;
+      const y = (e.clientY - rect.top) / rect.height - 0.5;
 
-      const moveX = (x - 0.5) * 12;
-      const moveY = (y - 0.5) * 12;
+      if (walletA) {
+        walletA.style.transform =
+          `translate(${x * 8}px, ${y * 6}px)`;
+      }
 
-      scene.style.setProperty(
-        "--mouse-x",
-        `${moveX}px`
-      );
+      if (walletB) {
+        walletB.style.transform =
+          `translate(${x * -8}px, ${y * -6}px)`;
+      }
 
-      scene.style.setProperty(
-        "--mouse-y",
-        `${moveY}px`
-      );
+      if (proofNode) {
+        proofNode.style.transform =
+          `translate(${x * 4}px, ${y * 4}px)`;
+      }
+
     });
+
 
     scene.addEventListener("mouseleave", () => {
-      scene.style.setProperty("--mouse-x", "0px");
-      scene.style.setProperty("--mouse-y", "0px");
+
+      if (walletA) {
+        walletA.style.transform = "";
+      }
+
+      if (walletB) {
+        walletB.style.transform = "";
+      }
+
+      if (proofNode) {
+        proofNode.style.transform = "";
+      }
+
     });
+
   }
 
 
   /* -----------------------------------------
-     Scroll reveal
+     SCROLL REVEALS
   ----------------------------------------- */
 
   const revealItems = document.querySelectorAll(
-    ".intro, .how-preview, .proof-section"
+    ".problem-copy, .privacy-visual, .approach-intro, .flow-stage, .how-preview .step, .proof-copy, .proof-visual"
   );
 
-  const observer = new IntersectionObserver(
+  const revealObserver = new IntersectionObserver(
     (entries) => {
 
       entries.forEach((entry) => {
 
         if (entry.isIntersecting) {
+
           entry.target.classList.add("revealed");
+
+          revealObserver.unobserve(entry.target);
+
         }
 
       });
 
     },
     {
-      threshold: 0.15
+      threshold: 0.15,
+      rootMargin: "0px 0px -60px 0px"
     }
   );
 
+
   revealItems.forEach((item) => {
     item.classList.add("reveal");
-    observer.observe(item);
+    revealObserver.observe(item);
   });
 
 
   /* -----------------------------------------
-     Smooth navigation
+     FLOW STAGGER
+  ----------------------------------------- */
+
+  document.querySelectorAll(".flow-stage").forEach((stage, index) => {
+
+    stage.style.transitionDelay = `${index * 120}ms`;
+
+  });
+
+
+  /* -----------------------------------------
+     HASH FLOATING MOTION
+  ----------------------------------------- */
+
+  const hashes = document.querySelectorAll(".hash");
+
+  hashes.forEach((hash, index) => {
+
+    hash.style.animationDelay = `${index * 1.1}s`;
+
+  });
+
+
+  /* -----------------------------------------
+     SMOOTH NAVIGATION
   ----------------------------------------- */
 
   document.querySelectorAll('a[href^="#"]').forEach((link) => {
 
-    link.addEventListener("click", (event) => {
+    link.addEventListener("click", (e) => {
 
       const targetId = link.getAttribute("href");
 
-      if (targetId === "#") return;
+      if (!targetId || targetId === "#") return;
 
       const target = document.querySelector(targetId);
 
       if (!target) return;
 
-      event.preventDefault();
+      e.preventDefault();
 
       target.scrollIntoView({
         behavior: "smooth",
