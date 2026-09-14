@@ -3169,3 +3169,694 @@ footer p {
    }
 
  }
+
+/* =========================================
+   VENUO — SECTION 03 TRANSACTION WALKTHROUGH
+========================================= */
+
+.how-preview {
+  position: relative;
+  padding: 150px 7vw;
+  overflow: hidden;
+}
+
+.how-intro {
+  max-width: 720px;
+  margin-bottom: 80px;
+}
+
+.how-intro h2 {
+  margin: 0 0 22px;
+  font-size: clamp(42px, 6vw, 82px);
+  line-height: .98;
+  letter-spacing: -.045em;
+}
+
+.how-intro h2 span {
+  color: var(--orange);
+}
+
+.how-intro p {
+  max-width: 580px;
+  color: var(--cream-muted);
+  font-size: 17px;
+  line-height: 1.8;
+}
+
+.transaction-walkthrough {
+  display: grid;
+  grid-template-columns: 1.25fr .75fr;
+  gap: 80px;
+  align-items: center;
+}
+
+
+/* =========================================
+   VISUAL
+========================================= */
+
+.walkthrough-visual {
+  position: relative;
+  min-height: 520px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid var(--border);
+
+  background:
+    radial-gradient(
+      circle at 50% 50%,
+      rgba(242,106,33,.08),
+      transparent 48%
+    ),
+    var(--charcoal);
+
+  overflow: hidden;
+}
+
+.walkthrough-grid {
+  position: absolute;
+  inset: 0;
+
+  opacity: .15;
+
+  background-image:
+    linear-gradient(
+      rgba(242,106,33,.15) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(242,106,33,.15) 1px,
+      transparent 1px
+    );
+
+  background-size: 45px 45px;
+
+  mask-image:
+    radial-gradient(
+      circle,
+      black,
+      transparent 75%
+    );
+}
+
+.transaction-window {
+  position: relative;
+  z-index: 2;
+
+  width: min(520px, 86%);
+
+  padding: 26px;
+
+  border: 1px solid var(--orange-border);
+
+  background:
+    rgba(9,8,7,.88);
+
+  box-shadow:
+    0 40px 100px rgba(0,0,0,.55),
+    0 0 60px rgba(242,106,33,.06);
+
+  backdrop-filter: blur(16px);
+
+  transition:
+    transform .6s cubic-bezier(.22,1,.36,1),
+    border-color .4s ease,
+    box-shadow .5s ease;
+}
+
+.transaction-window.active {
+  transform: translateY(-6px);
+
+  border-color: var(--orange);
+
+  box-shadow:
+    0 45px 110px rgba(0,0,0,.6),
+    0 0 70px rgba(242,106,33,.12);
+}
+
+.window-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding-bottom: 20px;
+
+  border-bottom: 1px solid var(--border);
+
+  color: var(--cream-muted);
+
+  font-family: "DM Mono", monospace;
+  font-size: 10px;
+  letter-spacing: .16em;
+}
+
+.window-status {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+
+  color: var(--orange);
+}
+
+.window-status i {
+  width: 6px;
+  height: 6px;
+
+  border-radius: 50%;
+
+  background: var(--orange);
+
+  box-shadow:
+    0 0 10px var(--orange);
+
+  animation: walkthroughLive 1.5s ease-in-out infinite;
+}
+
+@keyframes walkthroughLive {
+  0%,100% {
+    opacity: .45;
+    transform: scale(.8);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+
+/* =========================================
+   TRANSACTION ROUTE
+========================================= */
+
+.tx-route {
+  display: grid;
+  grid-template-columns: 1fr 100px 1fr;
+
+  align-items: center;
+
+  padding: 48px 0 40px;
+}
+
+.tx-wallet {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.tx-wallet:last-child {
+  text-align: right;
+}
+
+.wallet-label {
+  color: var(--cream-muted);
+
+  font-family: "DM Mono", monospace;
+  font-size: 9px;
+  letter-spacing: .16em;
+}
+
+.tx-wallet strong {
+  color: var(--cream);
+
+  font-family: "DM Mono", monospace;
+  font-size: 13px;
+}
+
+.tx-signal {
+  position: relative;
+
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      var(--orange),
+      transparent
+    );
+}
+
+.signal-core {
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  width: 9px;
+  height: 9px;
+
+  border-radius: 50%;
+
+  background: var(--orange);
+
+  transform:
+    translate(-50%, -50%);
+
+  box-shadow:
+    0 0 12px var(--orange),
+    0 0 30px rgba(242,106,33,.5);
+
+  animation:
+    routeSignal 1.8s linear infinite;
+}
+
+@keyframes routeSignal {
+
+  0% {
+    left: 0;
+    opacity: .2;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    left: 100%;
+    opacity: .2;
+  }
+
+}
+
+
+/* =========================================
+   DATA
+========================================= */
+
+.tx-data {
+  display: grid;
+  grid-template-columns:
+    repeat(2, 1fr);
+
+  gap: 14px;
+
+  margin-bottom: 14px;
+}
+
+.tx-data > div {
+  padding: 15px;
+
+  border: 1px solid var(--border);
+
+  background:
+    rgba(255,255,255,.018);
+
+  transition:
+    border-color .4s ease,
+    background .4s ease;
+}
+
+.tx-data > div:last-child {
+  grid-column: 1 / -1;
+}
+
+.tx-data span,
+.tx-proof > span {
+  display: block;
+
+  margin-bottom: 8px;
+
+  color: var(--cream-muted);
+
+  font-family: "DM Mono", monospace;
+  font-size: 8px;
+  letter-spacing: .14em;
+}
+
+.tx-data strong {
+  color: var(--cream);
+
+  font-family: "DM Mono", monospace;
+  font-size: 12px;
+}
+
+.tx-data .tx-state {
+  color: var(--orange);
+}
+
+.tx-proof {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding-top: 20px;
+
+  border-top: 1px solid var(--border);
+}
+
+.tx-proof > span {
+  margin: 0;
+}
+
+.tx-proof strong {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  color: var(--cream-muted);
+
+  font-family: "DM Mono", monospace;
+  font-size: 10px;
+}
+
+.tx-proof strong i {
+  width: 6px;
+  height: 6px;
+
+  border-radius: 50%;
+
+  background: var(--cream-muted);
+}
+
+.transaction-window.step-2
+.tx-proof strong i,
+.transaction-window.step-4
+.tx-proof strong i {
+  background: var(--orange);
+
+  box-shadow:
+    0 0 10px var(--orange);
+}
+
+
+/* =========================================
+   WALKTHROUGH STEPS
+========================================= */
+
+.walkthrough-steps {
+  display: flex;
+  flex-direction: column;
+
+  border-top: 1px solid var(--border);
+}
+
+.walk-step {
+  width: 100%;
+
+  display: grid;
+  grid-template-columns: 50px 1fr;
+
+  gap: 18px;
+
+  padding: 30px 0;
+
+  text-align: left;
+
+  border: 0;
+  border-bottom: 1px solid var(--border);
+
+  background: transparent;
+
+  color: inherit;
+
+  cursor: pointer;
+
+  transition:
+    padding-left .4s ease,
+    opacity .4s ease;
+}
+
+.walk-step:hover {
+  padding-left: 8px;
+}
+
+.walk-number {
+  padding-top: 4px;
+
+  color: var(--cream-muted);
+
+  font-family: "DM Mono", monospace;
+  font-size: 11px;
+
+  transition: color .4s ease;
+}
+
+.walk-step h3 {
+  margin: 0 0 9px;
+
+  color: var(--cream);
+
+  font-size: 22px;
+
+  transition: color .4s ease;
+}
+
+.walk-step p {
+  margin: 0;
+
+  max-width: 390px;
+
+  color: var(--cream-muted);
+
+  font-size: 14px;
+  line-height: 1.7;
+
+  transition: opacity .4s ease;
+}
+
+.walk-step.active {
+  padding-left: 12px;
+}
+
+.walk-step.active .walk-number,
+.walk-step.active h3 {
+  color: var(--orange);
+}
+
+.walk-step.active p {
+  color: var(--cream);
+}
+
+
+/* =========================================
+   BOTTOM STATEMENT
+========================================= */
+
+.how-bottom {
+  max-width: 850px;
+
+  margin: 100px auto 0;
+
+  text-align: center;
+}
+
+.how-bottom .bottom-line {
+  display: block;
+
+  width: 80px;
+  height: 1px;
+
+  margin: 0 auto 28px;
+
+  background: var(--orange);
+
+  box-shadow:
+    0 0 14px rgba(242,106,33,.45);
+}
+
+.how-bottom p {
+  margin: 0;
+
+  color: var(--cream-muted);
+
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+.how-bottom strong {
+  color: var(--cream);
+
+  transition: color .4s ease;
+}
+
+
+/* =========================================
+   STEP STATES
+========================================= */
+
+.transaction-window.step-1
+.tx-sensitive {
+  filter: blur(0);
+}
+
+.transaction-window.step-2
+.tx-sensitive {
+  filter: blur(5px);
+
+  opacity: .55;
+}
+
+.transaction-window.step-3
+.tx-sensitive {
+  filter: blur(7px);
+
+  opacity: .4;
+}
+
+.transaction-window.step-4
+.tx-sensitive {
+  filter: blur(7px);
+
+  opacity: .35;
+}
+
+.transaction-window.step-2
+.tx-proof .proof-state::after {
+  content: "";
+}
+
+.transaction-window.step-2
+.proof-state {
+  color: var(--orange);
+}
+
+.transaction-window.step-2
+.proof-state::before {
+  content: "GENERATING...";
+}
+
+.transaction-window.step-2
+.proof-state {
+  font-size: 0;
+}
+
+.transaction-window.step-2
+.proof-state::before {
+  font-size: 10px;
+}
+
+.transaction-window.step-3
+.proof-state,
+.transaction-window.step-4
+.proof-state {
+  color: var(--orange);
+}
+
+.transaction-window.step-3
+.proof-state {
+  font-size: 0;
+}
+
+.transaction-window.step-3
+.proof-state::before {
+  content: "VALID";
+  font-size: 10px;
+}
+
+.transaction-window.step-4
+.proof-state {
+  font-size: 0;
+}
+
+.transaction-window.step-4
+.proof-state::before {
+  content: "VERIFIED";
+  font-size: 10px;
+}
+
+.transaction-window.step-4
+.tx-state {
+  color: var(--orange-light);
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 900px) {
+
+  .how-preview {
+    padding: 110px 6vw;
+  }
+
+  .transaction-walkthrough {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+
+  .walkthrough-visual {
+    min-height: 430px;
+  }
+
+  .transaction-window {
+    width: 88%;
+  }
+
+  .tx-route {
+    grid-template-columns: 1fr 60px 1fr;
+  }
+
+  .walk-step {
+    padding: 24px 0;
+  }
+
+}
+
+@media (max-width: 600px) {
+
+  .how-intro {
+    margin-bottom: 55px;
+  }
+
+  .how-intro h2 {
+    font-size: 43px;
+  }
+
+  .walkthrough-visual {
+    min-height: 390px;
+  }
+
+  .transaction-window {
+    padding: 18px;
+  }
+
+  .tx-route {
+    padding: 35px 0;
+  }
+
+  .tx-wallet strong {
+    font-size: 11px;
+  }
+
+  .tx-data {
+    gap: 8px;
+  }
+
+  .tx-data > div {
+    padding: 12px;
+  }
+
+  .walk-step {
+    grid-template-columns: 38px 1fr;
+    gap: 12px;
+  }
+
+  .walk-step h3 {
+    font-size: 19px;
+  }
+
+  .how-bottom {
+    margin-top: 75px;
+  }
+
+}
+
+
+/* =========================================
+   REDUCED MOTION
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .signal-core,
+  .window-status i {
+    animation: none !important;
+  }
+
+}
