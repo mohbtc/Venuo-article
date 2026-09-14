@@ -1560,3 +1560,390 @@ footer p {
   }
 
 }
+
+/* =========================================
+   02 / THE APPROACH
+========================================= */
+
+.approach-section {
+  width: min(1180px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: 170px 0;
+}
+
+.approach-intro {
+  display: grid;
+  grid-template-columns: 1.05fr .75fr;
+  gap: 100px;
+  align-items: end;
+  margin-top: 55px;
+}
+
+.approach-intro h2 {
+  max-width: 650px;
+  font-size: clamp(48px, 5.5vw, 78px);
+  line-height: .96;
+  letter-spacing: -.065em;
+  font-weight: 600;
+}
+
+.approach-intro h2 span {
+  color: var(--orange);
+}
+
+.approach-lead {
+  max-width: 440px;
+  padding-bottom: 5px;
+}
+
+.approach-lead p {
+  margin-top: 18px;
+  color: var(--cream-muted);
+  font-size: 14px;
+  line-height: 1.85;
+}
+
+.approach-lead p:first-child {
+  margin-top: 0;
+  color: var(--cream);
+  font-size: 16px;
+}
+
+
+/* FLOW */
+
+.proof-flow {
+  display: grid;
+  grid-template-columns: 1fr 70px 1fr 70px 1fr;
+  align-items: stretch;
+  margin-top: 90px;
+}
+
+.flow-stage {
+  position: relative;
+  min-height: 390px;
+  padding: 30px;
+  background:
+    radial-gradient(
+      circle at 50% 20%,
+      rgba(242, 106, 33, .08),
+      transparent 55%
+    ),
+    #0d0c0a;
+  border: 1px solid var(--border);
+  overflow: hidden;
+  transition:
+    transform .4s ease,
+    border-color .4s ease,
+    box-shadow .4s ease;
+}
+
+.flow-stage:hover {
+  transform: translateY(-7px);
+  border-color: var(--orange-border);
+  box-shadow: 0 30px 80px rgba(0,0,0,.4);
+}
+
+.stage-number {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  font-family: "DM Mono", monospace;
+  font-size: 9px;
+  color: #5d564e;
+  letter-spacing: .1em;
+}
+
+.stage-icon {
+  width: 58px;
+  height: 58px;
+  display: grid;
+  place-items: center;
+  margin-top: 25px;
+  border: 1px solid var(--orange-border);
+  color: var(--orange);
+  background: rgba(242,106,33,.06);
+}
+
+.private-icon span {
+  font-size: 28px;
+  font-weight: 200;
+}
+
+.proof-icon-large span {
+  font-family: "DM Mono", monospace;
+  font-size: 17px;
+  font-weight: 500;
+}
+
+.verify-icon span {
+  font-size: 20px;
+}
+
+.stage-content {
+  margin-top: 55px;
+}
+
+.stage-label {
+  display: block;
+  font-family: "DM Mono", monospace;
+  font-size: 8px;
+  letter-spacing: .13em;
+  color: var(--orange);
+}
+
+.stage-content h3 {
+  margin-top: 13px;
+  font-size: 25px;
+  line-height: 1.1;
+  letter-spacing: -.035em;
+  font-weight: 500;
+  color: var(--cream);
+}
+
+.stage-content p {
+  margin-top: 17px;
+  color: var(--cream-muted);
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+
+/* DATA LINES */
+
+.data-lines {
+  position: absolute;
+  right: 25px;
+  bottom: 28px;
+  width: 70px;
+}
+
+.data-lines span {
+  display: block;
+  height: 1px;
+  margin-top: 7px;
+  background: rgba(242,106,33,.35);
+}
+
+.data-lines span:nth-child(1) {
+  width: 100%;
+}
+
+.data-lines span:nth-child(2) {
+  width: 70%;
+}
+
+.data-lines span:nth-child(3) {
+  width: 45%;
+}
+
+
+/* PROOF ORBIT */
+
+.proof-orbit {
+  position: absolute;
+  right: 25px;
+  bottom: 25px;
+  width: 58px;
+  height: 58px;
+  border: 1px solid rgba(242,106,33,.18);
+  border-radius: 50%;
+}
+
+.proof-orbit::before,
+.proof-orbit::after {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  border: 1px solid rgba(242,106,33,.2);
+  border-radius: 50%;
+}
+
+.proof-orbit::after {
+  inset: 18px;
+  border-color: var(--orange-border);
+}
+
+.proof-orbit i {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--orange);
+  box-shadow: 0 0 10px var(--orange);
+}
+
+.proof-orbit i:nth-child(1) {
+  top: 4px;
+  left: 27px;
+}
+
+.proof-orbit i:nth-child(2) {
+  right: 3px;
+  bottom: 15px;
+}
+
+.proof-orbit i:nth-child(3) {
+  left: 8px;
+  bottom: 7px;
+}
+
+
+/* VERIFIED BADGE */
+
+.verified-badge {
+  position: absolute;
+  right: 25px;
+  bottom: 28px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 10px;
+  border: 1px solid var(--orange-border);
+  background: rgba(242,106,33,.05);
+  font-family: "DM Mono", monospace;
+  font-size: 7px;
+  letter-spacing: .08em;
+  color: var(--orange);
+}
+
+.status-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--orange);
+  box-shadow: 0 0 9px var(--orange);
+}
+
+
+/* CONNECTORS */
+
+.flow-connector {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.connector-line {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--orange-border),
+    transparent
+  );
+}
+
+.connector-arrow {
+  position: absolute;
+  color: var(--orange);
+  font-family: "DM Mono", monospace;
+  font-size: 15px;
+  background: var(--black);
+  padding: 5px;
+}
+
+
+/* BOTTOM STATEMENT */
+
+.approach-bottom {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-top: 70px;
+}
+
+.bottom-line {
+  width: 45px;
+  height: 1px;
+  background: var(--orange);
+}
+
+.approach-bottom p {
+  max-width: 600px;
+  color: var(--cream-muted);
+  font-family: "DM Mono", monospace;
+  font-size: 9px;
+  line-height: 1.8;
+  letter-spacing: .02em;
+}
+
+.approach-bottom strong {
+  color: var(--cream);
+  font-weight: 400;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 900px) {
+
+  .approach-section {
+    width: min(100% - 30px, 1180px);
+    padding: 120px 0;
+  }
+
+  .approach-intro {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+
+  .proof-flow {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    margin-top: 65px;
+  }
+
+  .flow-connector {
+    height: 45px;
+  }
+
+  .connector-line {
+    width: 1px;
+    height: 100%;
+    background: linear-gradient(
+      180deg,
+      transparent,
+      var(--orange-border),
+      transparent
+    );
+  }
+
+  .connector-arrow {
+    transform: rotate(90deg);
+  }
+
+  .flow-stage {
+    min-height: 350px;
+  }
+}
+
+@media (max-width: 520px) {
+
+  .approach-intro h2 {
+    font-size: clamp(43px, 11vw, 61px);
+  }
+
+  .approach-lead p {
+    font-size: 13px;
+  }
+
+  .flow-stage {
+    min-height: 330px;
+    padding: 22px;
+  }
+
+  .stage-content {
+    margin-top: 48px;
+  }
+
+  .stage-content h3 {
+    font-size: 22px;
+  }
+
+  .approach-bottom {
+    align-items: flex-start;
+  }
+}
