@@ -2778,3 +2778,394 @@ footer p {
   }
 
 }
+
+ /* =========================================
+    VENUO — SECTION 02 PROOF PIPELINE
+ ========================================= */
+
+ .flow-stage {
+   cursor: pointer;
+   transform-origin: center;
+   transition:
+     transform .5s cubic-bezier(.22,1,.36,1),
+     border-color .4s ease,
+     box-shadow .5s ease,
+     background .5s ease;
+ }
+
+ .flow-stage::after {
+   content: "";
+   position: absolute;
+   inset: 0;
+   pointer-events: none;
+
+   background:
+     radial-gradient(
+       circle at 50% 20%,
+       rgba(242,106,33,.10),
+       transparent 55%
+     );
+
+   opacity: 0;
+   transition: opacity .5s ease;
+ }
+
+
+ /* =========================================
+    ACTIVE STAGE
+ ========================================= */
+
+ .flow-stage.pipeline-active {
+   transform: translateY(-8px);
+
+   border-color: var(--orange);
+
+   box-shadow:
+     0 30px 90px rgba(0,0,0,.5),
+     0 0 45px rgba(242,106,33,.08);
+ }
+
+ .flow-stage.pipeline-active::after {
+   opacity: 1;
+ }
+
+
+ /* Stage number */
+
+ .flow-stage .stage-number {
+   transition:
+     color .4s ease,
+     opacity .4s ease;
+ }
+
+ .flow-stage.pipeline-active .stage-number {
+   color: var(--orange);
+ }
+
+
+ /* =========================================
+    STAGE ICON
+ ========================================= */
+
+ .flow-stage .stage-icon {
+   position: relative;
+   z-index: 2;
+
+   transition:
+     transform .5s cubic-bezier(.22,1,.36,1),
+     box-shadow .5s ease,
+     background .5s ease,
+     border-color .4s ease;
+ }
+
+ .flow-stage.pipeline-active .stage-icon {
+   transform: scale(1.08);
+
+   background: rgba(242,106,33,.12);
+
+   border-color: var(--orange);
+
+   box-shadow:
+     0 0 30px rgba(242,106,33,.12);
+ }
+
+
+ /* =========================================
+    PRIVATE DATA MOTION
+ ========================================= */
+
+ .private-stage .data-lines span {
+   position: relative;
+   overflow: hidden;
+ }
+
+ .private-stage .data-lines span::after {
+   content: "";
+
+   position: absolute;
+   top: 0;
+   left: -30%;
+
+   width: 30%;
+   height: 100%;
+
+   background: var(--orange);
+
+   box-shadow:
+     0 0 12px var(--orange);
+
+   opacity: 0;
+ }
+
+ .private-stage.pipeline-active
+ .data-lines span::after {
+   opacity: 1;
+   animation:
+     dataScan 1.5s linear infinite;
+ }
+
+ .private-stage.pipeline-active
+ .data-lines span:nth-child(2)::after {
+   animation-delay: .35s;
+ }
+
+ .private-stage.pipeline-active
+ .data-lines span:nth-child(3)::after {
+   animation-delay: .7s;
+ }
+
+ @keyframes dataScan {
+
+   from {
+     left: -30%;
+   }
+
+   to {
+     left: 110%;
+   }
+
+ }
+
+
+ /* =========================================
+    PROOF GENERATION
+ ========================================= */
+
+ .proof-stage .proof-orbit {
+   transition:
+     transform .5s ease,
+     opacity .4s ease;
+ }
+
+ .proof-stage.pipeline-active
+ .proof-orbit {
+   animation:
+     proofOrbitPulse 2.2s ease-in-out infinite;
+ }
+
+ .proof-stage.pipeline-active
+ .proof-icon-large {
+   animation:
+     proofNodePulse 1.8s ease-in-out infinite;
+ }
+
+ @keyframes proofOrbitPulse {
+
+   0%,100% {
+     transform: scale(1);
+     opacity: .65;
+   }
+
+   50% {
+     transform: scale(1.12);
+     opacity: 1;
+   }
+
+ }
+
+ @keyframes proofNodePulse {
+
+   0%,100% {
+     box-shadow:
+       0 0 0 rgba(242,106,33,0);
+   }
+
+   50% {
+     box-shadow:
+       0 0 35px rgba(242,106,33,.2);
+   }
+
+ }
+
+
+ /* =========================================
+    VERIFICATION
+ ========================================= */
+
+ .verify-stage .verified-badge {
+   transition:
+     transform .4s ease,
+     box-shadow .4s ease,
+     background .4s ease;
+ }
+
+ .verify-stage.pipeline-active
+ .verified-badge {
+   transform: translateY(-2px);
+
+   background:
+     rgba(242,106,33,.10);
+
+   box-shadow:
+     0 0 25px rgba(242,106,33,.10);
+ }
+
+ .verify-stage.pipeline-active
+ .status-dot {
+   animation:
+     verifyPulse 1.2s ease-in-out infinite;
+ }
+
+ @keyframes verifyPulse {
+
+   0%,100% {
+     transform: scale(1);
+
+     box-shadow:
+       0 0 6px var(--orange);
+   }
+
+   50% {
+     transform: scale(1.5);
+
+     box-shadow:
+       0 0 18px var(--orange);
+   }
+
+ }
+
+
+ /* =========================================
+    CONNECTOR SIGNAL
+ ========================================= */
+
+ .flow-connector {
+   position: relative;
+ }
+
+ .flow-connector::after {
+   content: "";
+
+   position: absolute;
+
+   width: 7px;
+   height: 7px;
+
+   border-radius: 50%;
+
+   background:
+     var(--orange);
+
+   box-shadow:
+     0 0 12px var(--orange),
+     0 0 25px rgba(242,106,33,.4);
+
+   opacity: 0;
+ }
+
+ .flow-connector.signal-active::after {
+   opacity: 1;
+
+   animation:
+     signalTravel 1.2s linear infinite;
+ }
+
+ @keyframes signalTravel {
+
+   0% {
+     left: 0;
+     transform: scale(.6);
+   }
+
+   50% {
+     transform: scale(1);
+   }
+
+   100% {
+     left: calc(100% - 7px);
+     transform: scale(.6);
+   }
+
+ }
+
+
+ /* =========================================
+    BOTTOM STATEMENT
+ ========================================= */
+
+ .approach-bottom {
+   transition:
+     opacity .5s ease,
+     transform .5s ease;
+ }
+
+ .approach-bottom.pipeline-complete {
+   transform: translateY(-3px);
+ }
+
+ .approach-bottom.pipeline-complete
+ .bottom-line {
+   box-shadow:
+     0 0 12px var(--orange);
+ }
+
+ .approach-bottom.pipeline-complete
+ strong {
+   color: var(--orange);
+ }
+
+
+ /* =========================================
+    MOBILE CONNECTORS
+ ========================================= */
+
+ @media (max-width: 900px) {
+
+   .flow-connector.signal-active::after {
+     animation-name:
+       signalTravelVertical;
+   }
+
+   @keyframes signalTravelVertical {
+
+     0% {
+       top: 0;
+       left: 50%;
+
+       transform:
+         translateX(-50%)
+         scale(.6);
+     }
+
+     50% {
+       transform:
+         translateX(-50%)
+         scale(1);
+     }
+
+     100% {
+       top: calc(100% - 7px);
+       left: 50%;
+
+       transform:
+         translateX(-50%)
+         scale(.6);
+     }
+
+   }
+
+ }
+
+
+ /* =========================================
+    REDUCED MOTION
+ ========================================= */
+
+ @media (prefers-reduced-motion: reduce) {
+
+   .flow-stage.pipeline-active,
+   .proof-stage.pipeline-active
+   .proof-orbit,
+   .proof-stage.pipeline-active
+   .proof-icon-large,
+   .private-stage.pipeline-active
+   .data-lines span::after,
+   .verify-stage.pipeline-active
+   .status-dot,
+   .flow-connector.signal-active::after {
+
+     animation: none !important;
+
+   }
+
+ }
