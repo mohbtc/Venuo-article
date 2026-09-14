@@ -366,3 +366,136 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 });
+
+/* =========================================
+   SECTION 03 — TRANSACTION WALKTHROUGH
+========================================= */
+
+const walkthroughSteps =
+  document.querySelectorAll(".walk-step");
+
+const transactionWindow =
+  document.querySelector(".transaction-window");
+
+function activateWalkthrough(stepNumber) {
+
+  if (!transactionWindow) return;
+
+  walkthroughSteps.forEach((step) => {
+
+    step.classList.toggle(
+      "active",
+      Number(step.dataset.step) === stepNumber
+    );
+
+  });
+
+  transactionWindow.className =
+    `transaction-window step-${stepNumber} active`;
+
+}
+
+
+/* =========================================
+   STEP CLICK / TAP
+========================================= */
+
+walkthroughSteps.forEach((step) => {
+
+  step.addEventListener("click", () => {
+
+    const number =
+      Number(step.dataset.step);
+
+    activateWalkthrough(number);
+
+  });
+
+});
+
+
+/* =========================================
+   AUTO PROGRESSION
+========================================= */
+
+let walkthroughTimer;
+let walkthroughStarted = false;
+
+function startWalkthrough() {
+
+  if (walkthroughStarted) return;
+
+  walkthroughStarted = true;
+
+  let currentStep = 1;
+
+  activateWalkthrough(currentStep);
+
+  walkthroughTimer = setInterval(() => {
+
+    currentStep++;
+
+    if (currentStep > 4) {
+      currentStep = 1;
+    }
+
+    activateWalkthrough(currentStep);
+
+  }, 3200);
+
+}
+
+
+/* =========================================
+   START WHEN SECTION ENTERS VIEW
+========================================= */
+
+const howSection =
+  document.querySelector("#how");
+
+if (howSection) {
+
+  const howObserver =
+    new IntersectionObserver(
+      (entries) => {
+
+        entries.forEach((entry) => {
+
+          if (entry.isIntersecting) {
+
+            startWalkthrough();
+
+            howObserver.unobserve(
+              entry.target
+            );
+
+          }
+
+        });
+
+      },
+      {
+        threshold: 0.3
+      }
+    );
+
+  howObserver.observe(howSection);
+
+}
+
+
+/* =========================================
+   PAUSE AUTO FLOW ON INTERACTION
+========================================= */
+
+walkthroughSteps.forEach((step) => {
+
+  step.addEventListener("click", () => {
+
+    clearInterval(walkthroughTimer);
+
+    walkthroughStarted = true;
+
+  });
+
+});
