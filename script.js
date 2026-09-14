@@ -1,12 +1,8 @@
-/* =========================================
-   VENUO — MOTION SYSTEM
-========================================= */
-
 document.addEventListener("DOMContentLoaded", () => {
 
-  /* -----------------------------------------
-     HERO TRANSACTION MOTION
-  ----------------------------------------- */
+  /* =========================================
+     HERO INTERACTION
+  ========================================= */
 
   const scene = document.querySelector(".transaction-scene");
   const walletA = document.querySelector(".wallet-a");
@@ -14,8 +10,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const proofNode = document.querySelector(".proof-node");
 
   if (scene) {
-
-    /* Subtle cursor interaction */
 
     scene.addEventListener("mousemove", (e) => {
 
@@ -41,29 +35,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
     });
 
-
     scene.addEventListener("mouseleave", () => {
 
-      if (walletA) {
-        walletA.style.transform = "";
-      }
-
-      if (walletB) {
-        walletB.style.transform = "";
-      }
-
-      if (proofNode) {
-        proofNode.style.transform = "";
-      }
+      if (walletA) walletA.style.transform = "";
+      if (walletB) walletB.style.transform = "";
+      if (proofNode) proofNode.style.transform = "";
 
     });
 
   }
 
 
-  /* -----------------------------------------
+  /* =========================================
      SCROLL REVEALS
-  ----------------------------------------- */
+  ========================================= */
 
   const revealItems = document.querySelectorAll(
     ".problem-copy, .privacy-visual, .approach-intro, .flow-stage, .how-preview .step, .proof-copy, .proof-visual"
@@ -77,7 +62,6 @@ document.addEventListener("DOMContentLoaded", () => {
         if (entry.isIntersecting) {
 
           entry.target.classList.add("revealed");
-
           revealObserver.unobserve(entry.target);
 
         }
@@ -91,40 +75,94 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   );
 
-
   revealItems.forEach((item) => {
     item.classList.add("reveal");
     revealObserver.observe(item);
   });
 
 
-  /* -----------------------------------------
-     FLOW STAGGER
-  ----------------------------------------- */
+  /* =========================================
+     SECTION 02 STAGGER
+  ========================================= */
 
   document.querySelectorAll(".flow-stage").forEach((stage, index) => {
-
     stage.style.transitionDelay = `${index * 120}ms`;
-
   });
 
 
-  /* -----------------------------------------
-     HASH FLOATING MOTION
-  ----------------------------------------- */
+  /* =========================================
+     HERO HASH MOTION
+  ========================================= */
 
   const hashes = document.querySelectorAll(".hash");
 
   hashes.forEach((hash, index) => {
-
     hash.style.animationDelay = `${index * 1.1}s`;
-
   });
 
 
-  /* -----------------------------------------
-     SMOOTH NAVIGATION
-  ----------------------------------------- */
+  /* =========================================
+     PRIVACY TRANSFORMATION
+  ========================================= */
+
+  const privacyCard = document.querySelector("#privacyCard");
+  const privacyToggle = document.querySelector("#privacyToggle");
+  const privacyStatus = document.querySelector("#privacyStatus");
+  const proofState = document.querySelector("#proofState");
+  const toggleText = document.querySelector(".toggle-text");
+
+  if (privacyCard && privacyToggle) {
+
+    privacyToggle.addEventListener("click", () => {
+
+      const isProtected =
+        privacyCard.classList.contains("protected");
+
+
+      privacyCard.classList.add("protecting");
+
+
+      setTimeout(() => {
+        privacyCard.classList.remove("protecting");
+      }, 1000);
+
+
+      if (!isProtected) {
+
+        privacyCard.classList.add("protected");
+
+        privacyStatus.innerHTML =
+          "<i></i> PRIVATE";
+
+        proofState.textContent =
+          "VALID";
+
+        toggleText.textContent =
+          "REVEAL TRANSACTION";
+
+      } else {
+
+        privacyCard.classList.remove("protected");
+
+        privacyStatus.innerHTML =
+          "<i></i> PUBLIC";
+
+        proofState.textContent =
+          "VISIBLE";
+
+        toggleText.textContent =
+          "PROTECT TRANSACTION";
+
+      }
+
+    });
+
+  }
+
+
+  /* =========================================
+     SMOOTH SCROLL
+  ========================================= */
 
   document.querySelectorAll('a[href^="#"]').forEach((link) => {
 
