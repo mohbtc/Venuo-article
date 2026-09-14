@@ -959,251 +959,1026 @@
 
 
   <!-- =========================================
-       04 / THE PROOF LAYER
-       
-       ISOLATED VERSION
-       Uses v4- prefixed classes so it cannot
-       collide with Sections 1–3.
-  ========================================= -->
+     SECTION 04 — THE PROOF LAYER
+     V4 ISOLATED VERSION
+========================================= -->
 
-  <section class="v4-proof-section" id="proof">
+<style>
+/* =========================================
+   V4 PROOF LAYER
+========================================= */
 
-    <div class="v4-proof-copy">
+.v4-proof-section {
+  position: relative;
+  padding: 150px 0 120px;
+  overflow: hidden;
+}
 
-      <div class="section-tag">
-        04 / THE PROOF LAYER
-      </div>
+.v4-proof-copy {
+  max-width: 760px;
+  margin-bottom: 70px;
+}
 
-      <h2>
-        Reveal the
-        <span>proof.</span>
-        Not everything else.
-      </h2>
+.v4-proof-copy .section-tag {
+  color: var(--orange);
+}
 
-      <p>
-        Privacy isn't about hiding the truth.
-        It's about controlling what becomes visible.
-      </p>
+.v4-proof-copy h2 {
+  margin: 18px 0 24px;
+  max-width: 720px;
+  font-size: clamp(3rem, 7vw, 6.5rem);
+  line-height: .92;
+  letter-spacing: -.055em;
+  color: var(--cream);
+}
 
+.v4-proof-copy h2 span {
+  color: var(--orange);
+}
+
+.v4-proof-copy p {
+  max-width: 580px;
+  color: var(--cream-muted);
+  font-size: 1.05rem;
+  line-height: 1.8;
+}
+
+
+/* ATMOSPHERE */
+
+.v4-proof-visual {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  perspective: 1400px;
+}
+
+.v4-proof-atmosphere {
+  position: absolute;
+  inset: 5% 10%;
+  pointer-events: none;
+
+  background:
+    radial-gradient(
+      circle at 50% 45%,
+      rgba(242,106,33,.13),
+      transparent 45%
+    ),
+    radial-gradient(
+      circle at 20% 80%,
+      rgba(184,79,32,.08),
+      transparent 35%
+    );
+
+  filter: blur(20px);
+}
+
+.v4-proof-atmosphere::before,
+.v4-proof-atmosphere::after {
+  content: "";
+  position: absolute;
+  border: 1px solid rgba(242,106,33,.12);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.v4-proof-atmosphere::before {
+  width: 600px;
+  height: 600px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  animation: v4ProofOrbit 22s linear infinite;
+}
+
+.v4-proof-atmosphere::after {
+  width: 420px;
+  height: 420px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  animation: v4ProofOrbitReverse 16s linear infinite;
+}
+
+@keyframes v4ProofOrbit {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes v4ProofOrbitReverse {
+  from {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+
+  to {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+}
+
+
+/* TERMINAL */
+
+.v4-proof-terminal {
+  position: relative;
+  z-index: 2;
+
+  width: min(900px, 100%);
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(48,35,27,.98),
+      rgba(13,11,9,.98)
+    );
+
+  border: 1px solid rgba(242,232,213,.12);
+  border-radius: 18px;
+
+  box-shadow:
+    0 50px 120px rgba(0,0,0,.65),
+    0 0 60px rgba(242,106,33,.04);
+
+  transform-style: preserve-3d;
+
+  transition:
+    transform .25s ease,
+    border-color .5s ease,
+    box-shadow .5s ease;
+
+  animation:
+    v4TerminalReveal
+    1s
+    cubic-bezier(.22,1,.36,1)
+    both;
+}
+
+@keyframes v4TerminalReveal {
+  from {
+    opacity: 0;
+    transform:
+      translateY(45px)
+      scale(.97);
+  }
+
+  to {
+    opacity: 1;
+    transform:
+      translateY(0)
+      scale(1);
+  }
+}
+
+.v4-proof-terminal.v4-proof-live {
+  border-color: rgba(242,106,33,.5);
+
+  box-shadow:
+    0 50px 120px rgba(0,0,0,.65),
+    0 0 90px rgba(242,106,33,.10);
+}
+
+
+/* HEADER */
+
+.v4-terminal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 18px 22px;
+
+  border-bottom:
+    1px solid rgba(242,232,213,.08);
+}
+
+.v4-terminal-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  color: var(--cream);
+
+  font-family:
+    "DM Mono",
+    monospace;
+
+  font-size: .72rem;
+  letter-spacing: .08em;
+}
+
+.v4-terminal-dot {
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+
+  background: var(--orange);
+
+  box-shadow:
+    0 0 12px rgba(242,106,33,.8);
+
+  animation:
+    v4TerminalPulse
+    1.8s
+    ease-in-out
+    infinite;
+}
+
+@keyframes v4TerminalPulse {
+  0%,
+  100% {
+    opacity: .45;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+.v4-terminal-live {
+  color: var(--orange);
+
+  font-family:
+    "DM Mono",
+    monospace;
+
+  font-size: .65rem;
+  letter-spacing: .12em;
+}
+
+
+/* ROWS */
+
+.v4-proof-row {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 30px;
+  align-items: center;
+
+  padding: 28px 30px;
+
+  opacity: .35;
+
+  transform:
+    translateY(8px);
+
+  transition:
+    opacity .7s ease
+      var(--v4-proof-delay, 0ms),
+
+    transform .7s
+      cubic-bezier(.22,1,.36,1)
+      var(--v4-proof-delay, 0ms);
+}
+
+.v4-proof-row.v4-proof-row-active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.v4-proof-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.v4-proof-meta span {
+  color: var(--cream-muted);
+
+  font-family:
+    "DM Mono",
+    monospace;
+
+  font-size: .62rem;
+  letter-spacing: .1em;
+}
+
+.v4-proof-meta strong {
+  color: var(--cream);
+
+  font-size: .78rem;
+  letter-spacing: .04em;
+}
+
+
+/* PRIVATE DATA */
+
+.v4-proof-data {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.v4-redacted {
+  display: inline-flex;
+  align-items: center;
+
+  min-height: 34px;
+  padding: 0 12px;
+
+  border:
+    1px solid rgba(242,106,33,.2);
+
+  border-radius: 6px;
+
+  background:
+    rgba(242,106,33,.035);
+
+  color: var(--orange-light);
+
+  font-family:
+    "DM Mono",
+    monospace;
+
+  font-size: .72rem;
+
+  animation:
+    v4RedactedPulse
+    3s
+    ease-in-out
+    infinite;
+}
+
+@keyframes v4RedactedPulse {
+  0%,
+  100% {
+    opacity: .55;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+
+/* DIVIDERS */
+
+.v4-proof-divider {
+  position: relative;
+
+  height: 1px;
+
+  margin: 0 30px;
+
+  background:
+    rgba(242,232,213,.07);
+
+  overflow: hidden;
+}
+
+.v4-proof-divider span {
+  position: absolute;
+
+  inset: 0 auto 0 0;
+
+  width: 25%;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      var(--orange),
+      transparent
+    );
+
+  animation:
+    v4ProofLine
+    3s
+    ease-in-out
+    infinite;
+}
+
+@keyframes v4ProofLine {
+  from {
+    transform: translateX(-100%);
+  }
+
+  to {
+    transform: translateX(500%);
+  }
+}
+
+
+/* COMMITMENT */
+
+.v4-commitment {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+
+  font-family:
+    "DM Mono",
+    monospace;
+}
+
+.v4-commitment .hash-char {
+  color: var(--orange-light);
+  font-size: .95rem;
+
+  animation:
+    v4HashReveal
+    2.8s
+    ease-in-out
+    infinite;
+}
+
+.v4-commitment .hash-char.muted {
+  color: var(--cream-muted);
+  opacity: .35;
+}
+
+@keyframes v4HashReveal {
+  0%,
+  100% {
+    opacity: .45;
+    transform: translateY(2px);
+  }
+
+  50% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* PROOF GENERATION */
+
+.v4-proof-generation {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  color: var(--cream-muted);
+
+  font-family:
+    "DM Mono",
+    monospace;
+
+  font-size: .68rem;
+  letter-spacing: .03em;
+}
+
+.v4-proof-spinner {
+  width: 20px;
+  height: 20px;
+
+  border:
+    2px solid rgba(242,106,33,.16);
+
+  border-top-color:
+    var(--orange);
+
+  border-radius: 50%;
+
+  animation:
+    v4ProofSpin
+    .9s
+    linear
+    infinite;
+}
+
+@keyframes v4ProofSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+/* VERIFICATION */
+
+.v4-verification {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.v4-verification-icon {
+  display: grid;
+  place-items: center;
+
+  width: 38px;
+  height: 38px;
+
+  border:
+    1px solid rgba(242,106,33,.45);
+
+  border-radius: 50%;
+
+  color: var(--orange);
+
+  box-shadow:
+    0 0 25px rgba(242,106,33,.12);
+
+  animation:
+    v4VerificationPulse
+    2s
+    ease-in-out
+    infinite;
+}
+
+.v4-verification strong {
+  display: block;
+
+  margin-bottom: 4px;
+
+  color: var(--orange);
+
+  font-family:
+    "DM Mono",
+    monospace;
+
+  font-size: .75rem;
+}
+
+.v4-verification span {
+  display: block;
+
+  color: var(--cream-muted);
+
+  font-family:
+    "DM Mono",
+    monospace;
+
+  font-size: .62rem;
+}
+
+@keyframes v4VerificationPulse {
+  0%,
+  100% {
+    box-shadow:
+      0 0 15px rgba(242,106,33,.08);
+  }
+
+  50% {
+    box-shadow:
+      0 0 35px rgba(242,106,33,.2);
+  }
+}
+
+
+/* FOOTER */
+
+.v4-proof-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 18px 30px;
+
+  border-top:
+    1px solid rgba(242,232,213,.08);
+
+  background:
+    rgba(0,0,0,.18);
+
+  color: var(--cream-muted);
+
+  font-family:
+    "DM Mono",
+    monospace;
+
+  font-size: .62rem;
+  letter-spacing: .08em;
+}
+
+.v4-proof-footer strong {
+  color: var(--orange);
+}
+
+
+/* FINAL LINE */
+
+.v4-proof-final-line {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+
+  margin-top: 70px;
+
+  text-align: center;
+}
+
+.v4-proof-final-line > span {
+  width: 45px;
+  height: 1px;
+
+  background: var(--orange);
+  opacity: .6;
+}
+
+.v4-proof-final-line p {
+  margin: 0;
+
+  color: var(--cream-muted);
+
+  font-size: .95rem;
+  line-height: 1.6;
+}
+
+.v4-proof-final-line strong {
+  color: var(--cream);
+}
+
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+
+  .v4-proof-section {
+    padding: 110px 0 90px;
+  }
+
+  .v4-proof-copy h2 {
+    font-size:
+      clamp(2.8rem, 13vw, 4.5rem);
+  }
+
+  .v4-proof-row {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 24px 20px;
+  }
+
+  .v4-proof-divider {
+    margin: 0 20px;
+  }
+
+  .v4-terminal-header {
+    padding: 16px 20px;
+  }
+
+  .v4-proof-footer {
+    padding: 16px 20px;
+  }
+
+  .v4-proof-atmosphere::before {
+    width: 400px;
+    height: 400px;
+  }
+
+  .v4-proof-atmosphere::after {
+    width: 280px;
+    height: 280px;
+  }
+
+  .v4-proof-final-line {
+    margin-top: 50px;
+  }
+}
+
+
+/* REDUCED MOTION */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .v4-proof-terminal,
+  .v4-proof-row,
+  .v4-proof-atmosphere::before,
+  .v4-proof-atmosphere::after,
+  .v4-terminal-dot,
+  .v4-redacted,
+  .v4-proof-divider span,
+  .v4-commitment .hash-char,
+  .v4-proof-spinner,
+  .v4-verification-icon {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .v4-proof-row {
+    opacity: 1;
+    transform: none;
+  }
+}
+</style>
+
+
+<section class="v4-proof-section" id="proof">
+
+  <div class="v4-proof-copy">
+
+    <div class="section-tag">
+      04 / THE PROOF LAYER
     </div>
 
+    <h2>
+      Reveal the
+      <span>proof.</span>
+      Not everything else.
+    </h2>
 
-    <div class="v4-proof-visual">
+    <p>
+      Privacy isn't about hiding the truth.
+      It's about controlling what becomes visible.
+    </p>
 
-      <div class="v4-proof-atmosphere"></div>
+  </div>
 
 
-      <!-- PROOF TERMINAL -->
+  <div class="v4-proof-visual">
 
-      <div class="v4-proof-terminal">
+    <div class="v4-proof-atmosphere"></div>
 
-        <div class="v4-terminal-header">
+    <div class="v4-proof-terminal">
 
-          <div class="v4-terminal-title">
+      <div class="v4-terminal-header">
 
-            <span class="v4-terminal-dot"></span>
+        <div class="v4-terminal-title">
+          <span class="v4-terminal-dot"></span>
+          VENUO PROOF ENGINE
+        </div>
 
-            VENUO PROOF ENGINE
+        <span class="v4-terminal-live">
+          ACTIVE
+        </span>
 
-          </div>
+      </div>
 
-          <span class="v4-terminal-live">
-            ACTIVE
+
+      <div class="v4-proof-row">
+
+        <div class="v4-proof-meta">
+          <span>INPUT</span>
+          <strong>PRIVATE DATA</strong>
+        </div>
+
+        <div class="v4-proof-data">
+
+          <span class="v4-redacted">
+            0x7A...91F2
+          </span>
+
+          <span class="v4-redacted">
+            ███████████
+          </span>
+
+          <span class="v4-redacted">
+            ████████
           </span>
 
         </div>
 
-
-        <!-- PRIVATE INPUT -->
-
-        <div class="v4-proof-row">
-
-          <div class="v4-proof-meta">
-
-            <span>
-              INPUT
-            </span>
-
-            <strong>
-              PRIVATE DATA
-            </strong>
-
-          </div>
+      </div>
 
 
-          <div class="v4-proof-data">
+      <div class="v4-proof-divider">
+        <span></span>
+      </div>
 
-            <span class="v4-redacted">
-              0x7A...91F2
-            </span>
 
-            <span class="v4-redacted">
-              ███████████
-            </span>
+      <div class="v4-proof-row">
 
-            <span class="v4-redacted">
-              ████████
-            </span>
+        <div class="v4-proof-meta">
+          <span>STEP 01</span>
+          <strong>COMMITMENT</strong>
+        </div>
 
-          </div>
+        <div class="v4-commitment">
+
+          <span class="hash-char">9</span>
+          <span class="hash-char">F</span>
+          <span class="hash-char">8</span>
+          <span class="hash-char">2</span>
+
+          <span class="hash-char muted">
+            ...
+          </span>
+
+          <span class="hash-char">A</span>
+          <span class="hash-char">7</span>
+          <span class="hash-char">1</span>
+          <span class="hash-char">C</span>
 
         </div>
 
+      </div>
 
-        <div class="v4-proof-divider">
-          <span></span>
+
+      <div class="v4-proof-divider">
+        <span></span>
+      </div>
+
+
+      <div class="v4-proof-row">
+
+        <div class="v4-proof-meta">
+          <span>STEP 02</span>
+          <strong>PROOF</strong>
         </div>
 
+        <div class="v4-proof-generation">
 
-        <!-- COMMITMENT -->
-
-        <div class="v4-proof-row">
-
-          <div class="v4-proof-meta">
-
-            <span>
-              STEP 01
-            </span>
-
-            <strong>
-              COMMITMENT
-            </strong>
-
-          </div>
-
-
-          <div class="v4-commitment">
-
-            <span>9</span>
-            <span>F</span>
-            <span>8</span>
-            <span>2</span>
-            <span class="muted">...</span>
-            <span>A</span>
-            <span>7</span>
-            <span>1</span>
-            <span>C</span>
-
-          </div>
-
-        </div>
-
-
-        <div class="v4-proof-divider">
-          <span></span>
-        </div>
-
-
-        <!-- CRYPTOGRAPHIC PROOF -->
-
-        <div class="v4-proof-row">
-
-          <div class="v4-proof-meta">
-
-            <span>
-              STEP 02
-            </span>
-
-            <strong>
-              PROOF
-            </strong>
-
-          </div>
-
-
-          <div class="v4-proof-generation">
-
-            <div class="v4-proof-spinner"></div>
-
-            <span>
-              CRYPTOGRAPHIC PROOF GENERATED
-            </span>
-
-          </div>
-
-        </div>
-
-
-        <div class="v4-proof-divider">
-          <span></span>
-        </div>
-
-
-        <!-- VERIFICATION -->
-
-        <div class="v4-proof-row v4-final-row">
-
-          <div class="v4-proof-meta">
-
-            <span>
-              STEP 03
-            </span>
-
-            <strong>
-              VERIFICATION
-            </strong>
-
-          </div>
-
-
-          <div class="v4-verification">
-
-            <div class="v4-verification-icon">
-              ✓
-            </div>
-
-            <div>
-
-              <strong>
-                VALID
-              </strong>
-
-              <span>
-                WITHOUT REVEALING THE DATA
-              </span>
-
-            </div>
-
-          </div>
-
-        </div>
-
-
-        <!-- FINAL STATE -->
-
-        <div class="v4-proof-footer">
+          <div class="v4-proof-spinner"></div>
 
           <span>
-            DATA VISIBILITY
+            CRYPTOGRAPHIC PROOF GENERATED
           </span>
-
-          <strong>
-            PRIVATE
-          </strong>
 
         </div>
 
       </div>
 
-    </div>
+
+      <div class="v4-proof-divider">
+        <span></span>
+      </div>
 
 
-    <!-- FINAL THESIS -->
+      <div class="v4-proof-row">
 
-    <div class="v4-proof-final-line">
+        <div class="v4-proof-meta">
+          <span>STEP 03</span>
+          <strong>VERIFICATION</strong>
+        </div>
 
-      <span></span>
+        <div class="v4-verification">
 
-      <p>
-        You don't need to see everything
+          <div class="v4-verification-icon">
+            ✓
+          </div>
+
+          <div>
+
+            <strong>
+              VALID
+            </strong>
+
+            <span>
+              WITHOUT REVEALING THE DATA
+            </span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="v4-proof-footer">
+
+        <span>
+          DATA VISIBILITY
+        </span>
+
         <strong>
-          to know something is true.
+          PRIVATE
         </strong>
-      </p>
+
+      </div>
 
     </div>
 
-  </section>
+  </div>
 
-</body>
-</html>
+
+  <div class="v4-proof-final-line">
+
+    <span></span>
+
+    <p>
+      You don't need to see everything
+      <strong>to know something is true.</strong>
+    </p>
+
+  </div>
+
+</section>
+
+
+<script>
+/* =========================================
+   SECTION 04 — V4 PROOF LAYER JS
+========================================= */
+
+const v4ProofSection =
+  document.querySelector("#proof");
+
+const v4ProofTerminal =
+  document.querySelector(".v4-proof-terminal");
+
+const v4ProofRows =
+  document.querySelectorAll(".v4-proof-row");
+
+let v4ProofActivated = false;
+
+
+function activateV4ProofLayer() {
+
+  if (
+    !v4ProofTerminal ||
+    v4ProofActivated
+  ) {
+    return;
+  }
+
+  v4ProofActivated = true;
+
+  v4ProofTerminal.classList.add(
+    "v4-proof-live"
+  );
+
+  v4ProofRows.forEach(
+    (row, index) => {
+
+      row.style.setProperty(
+        "--v4-proof-delay",
+        `${index * 450}ms`
+      );
+
+      row.classList.add(
+        "v4-proof-row-active"
+      );
+
+    }
+  );
+}
+
+
+/* SCROLL ACTIVATION */
+
+if (v4ProofSection) {
+
+  const v4ProofObserver =
+    new IntersectionObserver(
+      (entries) => {
+
+        entries.forEach(
+          (entry) => {
+
+            if (
+              entry.isIntersecting
+            ) {
+
+              activateV4ProofLayer();
+
+              v4ProofObserver.unobserve(
+                entry.target
+              );
+
+            }
+
+          }
+        );
+
+      },
+      {
+        threshold: 0.35
+      }
+    );
+
+  v4ProofObserver.observe(
+    v4ProofSection
+  );
+}
+
+
+/* TERMINAL MOUSE MOTION */
+
+if (v4ProofTerminal) {
+
+  v4ProofTerminal.addEventListener(
+    "mousemove",
+    (e) => {
+
+      const rect =
+        v4ProofTerminal
+          .getBoundingClientRect();
+
+      const x =
+        (e.clientX - rect.left) /
+          rect.width -
+        0.5;
+
+      const y =
+        (e.clientY - rect.top) /
+          rect.height -
+        0.5;
+
+      v4ProofTerminal.style.transform =
+        `perspective(1200px)
+         rotateY(${x * 2}deg)
+         rotateX(${y * -2}deg)`;
+
+    }
+  );
+
+
+  v4ProofTerminal.addEventListener(
+    "mouseleave",
+    () => {
+
+      v4ProofTerminal.style.transform =
+        "";
+
+    }
+  );
+
+}
+</script>
