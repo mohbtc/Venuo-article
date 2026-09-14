@@ -2266,3 +2266,180 @@ footer p {
   }
 
 }
+
+/* =========================================
+   VENUO — INTERACTIVE PRIVACY TRANSFORMATION
+========================================= */
+
+.transaction-card {
+  position: relative;
+  overflow: hidden;
+}
+
+/* scanning beam */
+
+.privacy-scan {
+  position: absolute;
+  left: -10%;
+  top: 0;
+  width: 2px;
+  height: 100%;
+  background: var(--orange);
+  box-shadow:
+    0 0 15px var(--orange),
+    0 0 40px rgba(242,106,33,.35);
+  opacity: 0;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.transaction-card.protecting .privacy-scan {
+  animation: privacyScan 1s cubic-bezier(.22,1,.36,1);
+}
+
+@keyframes privacyScan {
+  0% {
+    left: -5%;
+    opacity: 0;
+  }
+
+  15% {
+    opacity: 1;
+  }
+
+  85% {
+    opacity: 1;
+  }
+
+  100% {
+    left: 105%;
+    opacity: 0;
+  }
+}
+
+
+/* sensitive information */
+
+.sensitive-value {
+  transition:
+    filter .55s ease,
+    opacity .55s ease,
+    color .55s ease,
+    letter-spacing .55s ease;
+}
+
+.transaction-card.protected .sensitive-value {
+  filter: blur(5px);
+  opacity: .25;
+  color: var(--cream-muted);
+  letter-spacing: .08em;
+}
+
+
+/* proof confirmation */
+
+.transaction-card.protected .proof-icon {
+  background: rgba(242,106,33,.18);
+  box-shadow:
+    0 0 25px rgba(242,106,33,.12);
+}
+
+#proofState {
+  transition:
+    color .4s ease,
+    opacity .4s ease;
+}
+
+.transaction-card.protected #proofState {
+  color: var(--orange);
+}
+
+
+/* interaction button */
+
+.privacy-toggle {
+  position: relative;
+  width: 100%;
+  margin-top: 25px;
+  padding: 13px 14px;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  border: 1px solid var(--orange-border);
+  background: rgba(242,106,33,.035);
+
+  color: var(--orange);
+
+  font-family: "DM Mono", monospace;
+  font-size: 8px;
+  letter-spacing: .08em;
+
+  cursor: pointer;
+
+  transition:
+    background .3s ease,
+    border-color .3s ease,
+    box-shadow .3s ease,
+    transform .3s ease;
+}
+
+.privacy-toggle:hover {
+  background: rgba(242,106,33,.09);
+  border-color: var(--orange);
+  box-shadow:
+    0 0 25px rgba(242,106,33,.08);
+
+  transform: translateY(-2px);
+}
+
+.privacy-toggle:active {
+  transform: translateY(0);
+}
+
+.toggle-icon {
+  font-size: 9px;
+
+  transition:
+    transform .5s ease;
+}
+
+.toggle-text {
+  flex: 1;
+  text-align: left;
+}
+
+.toggle-arrow {
+  font-size: 12px;
+
+  transition:
+    transform .4s ease;
+}
+
+
+/* protected state */
+
+.transaction-card.protected .toggle-icon {
+  transform: rotate(180deg);
+}
+
+.transaction-card.protected .toggle-arrow {
+  transform: rotate(180deg);
+}
+
+.transaction-card.protected .privacy-toggle {
+  background: rgba(242,106,33,.08);
+}
+
+
+/* mobile */
+
+@media (max-width:520px) {
+
+  .privacy-toggle {
+    font-size: 7px;
+    padding: 12px;
+  }
+
+}
