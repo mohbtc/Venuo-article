@@ -251,7 +251,9 @@
 
 
 
-      <!-- Privacy transformation visual -->
+      <!-- =========================================
+           PRIVACY TRANSFORMATION VISUAL
+      ========================================= -->
 
       <div class="privacy-visual">
 
@@ -261,40 +263,79 @@
         </div>
 
 
-        <div class="transaction-card">
+        <!-- Interactive transaction card -->
+
+        <div class="transaction-card" id="privacyCard">
 
           <div class="card-header">
+
             <span>TRANSACTION</span>
 
-            <span class="live-status">
-              <i></i> VERIFIED
+            <span class="live-status" id="privacyStatus">
+              <i></i> PUBLIC
             </span>
+
           </div>
 
 
+          <!-- Animated privacy scan -->
+
+          <div class="privacy-scan"></div>
+
+
+          <!-- Sender -->
+
           <div class="transaction-row">
+
             <span>FROM</span>
-            <strong>0x7A...91F2</strong>
+
+            <strong>
+              0x7A...91F2
+            </strong>
+
           </div>
 
+
+          <!-- Receiver -->
 
           <div class="transaction-row">
+
             <span>TO</span>
-            <strong>0x42...C8D1</strong>
+
+            <strong>
+              0x42...C8D1
+            </strong>
+
           </div>
 
 
+          <!-- Sensitive amount -->
+
           <div class="transaction-row sensitive">
+
             <span>AMOUNT</span>
-            <strong>12.48 ETH</strong>
+
+            <strong class="sensitive-value">
+              12.48 ETH
+            </strong>
+
           </div>
 
+
+          <!-- Sensitive counterparty -->
 
           <div class="transaction-row sensitive">
+
             <span>COUNTERPARTY</span>
-            <strong>0x93...71AC</strong>
+
+            <strong class="sensitive-value">
+              0x93...71AC
+            </strong>
+
           </div>
 
+
+          <!-- Proof -->
 
           <div class="proof-status">
 
@@ -303,14 +344,46 @@
             </div>
 
             <div>
-              <span>PROOF</span>
-              <strong>VALID</strong>
+
+              <span>
+                PROOF
+              </span>
+
+              <strong id="proofState">
+                VISIBLE
+              </strong>
+
             </div>
 
           </div>
 
+
+          <!-- Privacy control -->
+
+          <button
+            class="privacy-toggle"
+            id="privacyToggle"
+            type="button"
+          >
+
+            <span class="toggle-icon">
+              ◉
+            </span>
+
+            <span class="toggle-text">
+              PROTECT TRANSACTION
+            </span>
+
+            <span class="toggle-arrow">
+              →
+            </span>
+
+          </button>
+
         </div>
 
+
+        <!-- Explanation -->
 
         <div class="privacy-note">
 
@@ -318,7 +391,9 @@
 
           <p>
             Sensitive information fades.
-            <strong>Verification remains.</strong>
+            <strong>
+              Verification remains.
+            </strong>
           </p>
 
         </div>
