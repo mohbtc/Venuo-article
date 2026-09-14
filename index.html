@@ -5,9 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Venuo — Private Onchain Infrastructure</title>
+
   <meta
     name="description"
-    content="Venuo is building privacy infrastructure for the onchain economy."
+    content="A research article by Mohcipher exploring Venuo and privacy infrastructure for the onchain economy."
   />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,8 +28,10 @@
   <div class="ambient ambient-one"></div>
   <div class="ambient ambient-two"></div>
 
-  <!-- Navigation -->
+
+  <!-- NAVIGATION -->
   <header class="nav">
+
     <a href="#" class="brand">
       <span class="brand-mark">V</span>
       <span>venuо</span>
@@ -44,46 +47,56 @@
       Explore
       <span>↗</span>
     </a>
+
   </header>
 
 
-  <!-- HERO -->
+  <!-- =========================================
+       HERO / ARTICLE OPENING
+  ========================================= -->
+
   <main class="hero">
 
-    <<div class="hero-copy editorial-copy">
+    <div class="hero-copy editorial-copy">
 
-  <div class="article-label">
-    <span class="article-line"></span>
-    AN ARTICLE BY @MOHCIPHER_
-  </div>
+      <div class="article-label">
+        <span class="article-line"></span>
+        AN ARTICLE BY @MOHCIPHER_
+      </div>
 
-  <h1 class="article-hook">
-    Privacy onchain is often framed as a problem
-    of <span>hiding information.</span>
-  </h1>
+      <h1 class="article-hook">
+        Privacy onchain is often framed as a problem
+        of <span>hiding information.</span>
+      </h1>
 
-  <p class="article-question">
-    Venuo approaches it from a more interesting angle:
-    <strong>
-      how do you keep information private while still
-      making the right things verifiable?
-    </strong>
-  </p>
+      <p class="article-question">
+        Venuo approaches it from a more interesting angle:
 
-  <a href="#approach" class="rabbit-hole">
-    <span>So I went down the rabbit hole.</span>
-    <b>↓</b>
-  </a>
+        <strong>
+          how do you keep information private while still
+          making the right things verifiable?
+        </strong>
+      </p>
 
-</div>
+      <a href="#problem" class="rabbit-hole">
+        <span>So I went down the rabbit hole.</span>
+        <b>↓</b>
+      </a>
+
+    </div>
+
 
     <!-- TRANSACTION VISUAL -->
+
     <div class="transaction-scene">
 
       <div class="scene-grid"></div>
 
+
       <!-- Wallet A -->
+
       <div class="wallet wallet-a">
+
         <div class="wallet-top">
           <span>WALLET A</span>
           <span class="wallet-live">LIVE</span>
@@ -97,16 +110,19 @@
           <span>12.48</span>
           <small>ETH</small>
         </div>
+
       </div>
 
 
       <!-- Transaction path -->
+
       <div class="flow flow-one">
         <div class="particle"></div>
       </div>
 
 
       <!-- Proof -->
+
       <div class="proof-node">
 
         <div class="proof-ring ring-one"></div>
@@ -125,12 +141,14 @@
 
 
       <!-- Second path -->
+
       <div class="flow flow-two">
         <div class="particle"></div>
       </div>
 
 
       <!-- Wallet B -->
+
       <div class="wallet wallet-b">
 
         <div class="wallet-top">
@@ -150,164 +168,161 @@
       </div>
 
 
-      <!-- Floating cryptographic fragments -->
-      <div class="hash hash-one">9f82...a71c</div>
-      <div class="hash hash-two">zk_4F8...91B</div>
-      <div class="hash hash-three">proof.valid()</div>
+      <!-- Cryptographic fragments -->
+
+      <div class="hash hash-one">
+        9f82...a71c
+      </div>
+
+      <div class="hash hash-two">
+        zk_4F8...91B
+      </div>
+
+      <div class="hash hash-three">
+        proof.valid()
+      </div>
 
     </div>
 
   </main>
 
 
-  <!-- SMALL INTRO SECTION -->
-<section class="problem-section" id="approach">
 
-  <div class="section-tag">
-    01 / THE PROBLEM
-  </div>
+  <!-- =========================================
+       01 / THE PROBLEM
+  ========================================= -->
 
-  <div class="problem-layout">
-
-    <article class="problem-copy">
-
-      <h2>
-        The blockchain
-        <span>remembers everything.</span>
-      </h2>
-
-      <p>
-        That transparency is one of the reasons blockchains are powerful.
-        Transactions can be verified, balances can be tracked, and activity
-        can be audited without relying on a central authority.
-      </p>
-
-      <p>
-        But there’s another side to that transparency.
-      </p>
-
-      <p class="problem-emphasis">
-        Once something happens onchain,
-        <span>it can leave a permanent trail.</span>
-      </p>
-
-      <p>
-        Wallet activity, transaction history, counterparties, and financial
-        behavior can become visible to anyone willing to look closely enough.
-      </p>
-
-      <div class="problem-question">
-
-        <span>THE QUESTION</span>
-
-        <strong>
-          How do you preserve the verifiability of a public network
-          without making every detail public?
-        </strong>
-
-      </div>
-
-      <p class="venuo-transition">
-        This is the problem <span>Venuo</span> is exploring.
-      </p>
-
-    </article>
-
-
-    <!-- Privacy transformation visual -->
-
-    <div class="privacy-visual">
-
-      <div class="visual-label">
-        <span>TRANSACTION VISIBILITY</span>
-        <span class="orange-text">PUBLIC → PRIVATE</span>
-      </div>
-
-      <div class="transaction-card">
-
-        <div class="card-header">
-          <span>TRANSACTION</span>
-          <span class="live-status">
-            <i></i> VERIFIED
-          </span>
-        </div>
-
-        <div class="transaction-row">
-          <span>FROM</span>
-          <strong>0x7A...91F2</strong>
-        </div>
-
-        <div class="transaction-row">
-          <span>TO</span>
-          <strong>0x42...C8D1</strong>
-        </div>
-
-        <div class="transaction-row sensitive">
-          <span>AMOUNT</span>
-          <strong>12.48 ETH</strong>
-        </div>
-
-        <div class="transaction-row sensitive">
-          <span>COUNTERPARTY</span>
-          <strong>0x93...71AC</strong>
-        </div>
-
-        <div class="proof-status">
-          <div class="proof-icon">✓</div>
-
-          <div>
-            <span>PROOF</span>
-            <strong>VALID</strong>
-          </div>
-        </div>
-
-      </div>
-
-      <div class="privacy-note">
-        <span class="note-line"></span>
-        <p>
-          Sensitive information fades.
-          <strong>Verification remains.</strong>
-        </p>
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-  <!-- HOW IT WORKS PREVIEW -->
-  <section class="how-preview" id="how">
+  <section class="problem-section" id="problem">
 
     <div class="section-tag">
-      02 / HOW IT WORKS
+      01 / THE PROBLEM
     </div>
 
-    <div class="steps">
+    <div class="problem-layout">
 
-      <div class="step">
-        <span>01</span>
-        <h3>Initiate</h3>
-        <p>Start a transaction without broadcasting unnecessary information.</p>
-      </div>
 
-      <div class="step">
-        <span>02</span>
-        <h3>Prove</h3>
-        <p>Generate the cryptographic proof required to verify the action.</p>
-      </div>
+      <!-- Problem copy -->
 
-      <div class="step">
-        <span>03</span>
-        <h3>Execute</h3>
-        <p>Move value while keeping sensitive transaction details private.</p>
-      </div>
+      <article class="problem-copy">
 
-      <div class="step">
-        <span>04</span>
-        <h3>Verify</h3>
-        <p>Anyone who needs to verify the claim can do so without seeing everything.</p>
+        <h2>
+          The blockchain
+          <span>remembers everything.</span>
+        </h2>
+
+        <p>
+          That transparency is one of the reasons blockchains are powerful.
+          Transactions can be verified, balances can be tracked, and activity
+          can be audited without relying on a central authority.
+        </p>
+
+        <p>
+          But there’s another side to that transparency.
+        </p>
+
+        <p class="problem-emphasis">
+          Once something happens onchain,
+          <span>it can leave a permanent trail.</span>
+        </p>
+
+        <p>
+          Wallet activity, transaction history, counterparties, and financial
+          behavior can become visible to anyone willing to look closely enough.
+        </p>
+
+
+        <div class="problem-question">
+
+          <span>THE QUESTION</span>
+
+          <strong>
+            How do you preserve the verifiability of a public network
+            without making every detail public?
+          </strong>
+
+        </div>
+
+
+        <p class="venuo-transition">
+          This is the problem <span>Venuo</span> is exploring.
+        </p>
+
+      </article>
+
+
+
+      <!-- Privacy transformation visual -->
+
+      <div class="privacy-visual">
+
+        <div class="visual-label">
+          <span>TRANSACTION VISIBILITY</span>
+          <span class="orange-text">PUBLIC → PRIVATE</span>
+        </div>
+
+
+        <div class="transaction-card">
+
+          <div class="card-header">
+            <span>TRANSACTION</span>
+
+            <span class="live-status">
+              <i></i> VERIFIED
+            </span>
+          </div>
+
+
+          <div class="transaction-row">
+            <span>FROM</span>
+            <strong>0x7A...91F2</strong>
+          </div>
+
+
+          <div class="transaction-row">
+            <span>TO</span>
+            <strong>0x42...C8D1</strong>
+          </div>
+
+
+          <div class="transaction-row sensitive">
+            <span>AMOUNT</span>
+            <strong>12.48 ETH</strong>
+          </div>
+
+
+          <div class="transaction-row sensitive">
+            <span>COUNTERPARTY</span>
+            <strong>0x93...71AC</strong>
+          </div>
+
+
+          <div class="proof-status">
+
+            <div class="proof-icon">
+              ✓
+            </div>
+
+            <div>
+              <span>PROOF</span>
+              <strong>VALID</strong>
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="privacy-note">
+
+          <span class="note-line"></span>
+
+          <p>
+            Sensitive information fades.
+            <strong>Verification remains.</strong>
+          </p>
+
+        </div>
+
       </div>
 
     </div>
@@ -315,20 +330,332 @@
   </section>
 
 
-  <!-- PROOF -->
+
+  <!-- =========================================
+       02 / THE APPROACH
+  ========================================= -->
+
+  <section class="approach-section" id="approach">
+
+    <div class="section-tag">
+      02 / THE APPROACH
+    </div>
+
+
+    <div class="approach-intro">
+
+      <div>
+
+        <h2>
+          Privacy doesn't mean
+          <span>disappearing.</span>
+        </h2>
+
+      </div>
+
+
+      <div class="approach-lead">
+
+        <p>
+          The interesting part of Venuo is that it doesn't treat privacy
+          and verification as opposites.
+        </p>
+
+        <p>
+          Instead, sensitive information can stay private while the network
+          still receives the proof it needs to verify what happened.
+        </p>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- Proof flow -->
+
+    <div class="proof-flow">
+
+
+      <!-- PRIVATE -->
+
+      <div class="flow-stage private-stage">
+
+        <div class="stage-number">
+          01
+        </div>
+
+
+        <div class="stage-icon private-icon">
+          <span>◌</span>
+        </div>
+
+
+        <div class="stage-content">
+
+          <span class="stage-label">
+            PRIVATE INFORMATION
+          </span>
+
+          <h3>
+            Keep the details private.
+          </h3>
+
+          <p>
+            Transaction data doesn't need to become public just because
+            the result needs to be trusted.
+          </p>
+
+        </div>
+
+
+        <div class="data-lines">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+
+      </div>
+
+
+
+      <!-- CONNECTOR -->
+
+      <div class="flow-connector">
+
+        <div class="connector-line"></div>
+
+        <div class="connector-arrow">
+          →
+        </div>
+
+      </div>
+
+
+
+      <!-- PROOF -->
+
+      <div class="flow-stage proof-stage">
+
+        <div class="stage-number">
+          02
+        </div>
+
+
+        <div class="stage-icon proof-icon-large">
+          <span>V</span>
+        </div>
+
+
+        <div class="stage-content">
+
+          <span class="stage-label">
+            PROOF GENERATION
+          </span>
+
+          <h3>
+            Prove what matters.
+          </h3>
+
+          <p>
+            Cryptographic proofs can demonstrate that a condition is true
+            without revealing every underlying detail.
+          </p>
+
+        </div>
+
+
+        <div class="proof-orbit">
+          <i></i>
+          <i></i>
+          <i></i>
+        </div>
+
+      </div>
+
+
+
+      <!-- CONNECTOR -->
+
+      <div class="flow-connector">
+
+        <div class="connector-line"></div>
+
+        <div class="connector-arrow">
+          →
+        </div>
+
+      </div>
+
+
+
+      <!-- VERIFY -->
+
+      <div class="flow-stage verify-stage">
+
+        <div class="stage-number">
+          03
+        </div>
+
+
+        <div class="stage-icon verify-icon">
+          <span>✓</span>
+        </div>
+
+
+        <div class="stage-content">
+
+          <span class="stage-label">
+            VERIFIABLE RESULT
+          </span>
+
+          <h3>
+            Trust the outcome.
+          </h3>
+
+          <p>
+            The network can verify the result while the sensitive information
+            behind it remains private.
+          </p>
+
+        </div>
+
+
+        <div class="verified-badge">
+
+          <span class="status-dot"></span>
+
+          PROOF VALID
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- Bottom statement -->
+
+    <div class="approach-bottom">
+
+      <span class="bottom-line"></span>
+
+      <p>
+        The goal isn't to hide the truth.
+        <strong>
+          It's to reveal only what needs to be verified.
+        </strong>
+      </p>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- =========================================
+       03 / HOW IT WORKS
+  ========================================= -->
+
+  <section class="how-preview" id="how">
+
+    <div class="section-tag">
+      03 / HOW IT WORKS
+    </div>
+
+
+    <div class="steps">
+
+
+      <div class="step">
+
+        <span>01</span>
+
+        <h3>
+          Initiate
+        </h3>
+
+        <p>
+          Start a transaction without broadcasting unnecessary information.
+        </p>
+
+      </div>
+
+
+
+      <div class="step">
+
+        <span>02</span>
+
+        <h3>
+          Prove
+        </h3>
+
+        <p>
+          Generate the cryptographic proof required to verify the action.
+        </p>
+
+      </div>
+
+
+
+      <div class="step">
+
+        <span>03</span>
+
+        <h3>
+          Execute
+        </h3>
+
+        <p>
+          Move value while keeping sensitive transaction details private.
+        </p>
+
+      </div>
+
+
+
+      <div class="step">
+
+        <span>04</span>
+
+        <h3>
+          Verify
+        </h3>
+
+        <p>
+          Anyone who needs to verify the claim can do so without seeing everything.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- =========================================
+       04 / THE PROOF
+  ========================================= -->
+
   <section class="proof-section" id="proof">
+
 
     <div class="proof-copy">
 
       <div class="section-tag">
-        03 / THE PROOF LAYER
+        04 / THE PROOF LAYER
       </div>
+
 
       <h2>
         Reveal the
         <span>proof.</span>
         Not everything else.
       </h2>
+
 
       <p>
         Privacy isn't about hiding the truth.
@@ -337,23 +664,51 @@
 
     </div>
 
+
+
     <div class="proof-visual">
 
       <div class="proof-card">
+
         <div class="proof-card-header">
-          <span>VENUEO PROOF</span>
+
+          <span>
+            VENUO PROOF
+          </span>
+
           <span class="orange-dot"></span>
+
         </div>
 
+
         <div class="proof-lines">
-          <span>commitment</span>
-          <strong>0x9F82...A71C</strong>
 
-          <span>verification</span>
-          <strong>VALID</strong>
+          <span>
+            commitment
+          </span>
 
-          <span>status</span>
-          <strong class="orange-text">PRIVATE</strong>
+          <strong>
+            0x9F82...A71C
+          </strong>
+
+
+          <span>
+            verification
+          </span>
+
+          <strong>
+            VALID
+          </strong>
+
+
+          <span>
+            status
+          </span>
+
+          <strong class="orange-text">
+            PRIVATE
+          </strong>
+
         </div>
 
       </div>
@@ -363,19 +718,33 @@
   </section>
 
 
-  <!-- FOOTER -->
+
+  <!-- =========================================
+       FOOTER
+  ========================================= -->
+
   <footer id="explore">
 
     <div class="footer-brand">
-      <span class="brand-mark">V</span>
-      <span>venuо</span>
+
+      <span class="brand-mark">
+        V
+      </span>
+
+      <span>
+        venuо
+      </span>
+
     </div>
 
+
     <div class="footer-line"></div>
+
 
     <p>
       Private infrastructure for the onchain economy.
     </p>
+
 
     <span class="footer-copy">
       © 2026 Venuo
@@ -384,6 +753,8 @@
   </footer>
 
 
+
   <script src="script.js"></script>
+
 </body>
 </html>
