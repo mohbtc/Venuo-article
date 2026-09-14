@@ -3860,3 +3860,734 @@ footer p {
   }
 
 }
+
+/* =========================================
+   VENUO — SECTION 04 / THE PROOF LAYER
+========================================= */
+
+.proof-final {
+  position: relative;
+  min-height: 620px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+}
+
+.proof-atmosphere {
+  position: absolute;
+  inset: 0;
+
+  background:
+    radial-gradient(
+      circle at 50% 45%,
+      rgba(242,106,33,.13),
+      transparent 42%
+    ),
+    radial-gradient(
+      circle at 20% 80%,
+      rgba(184,79,32,.08),
+      transparent 35%
+    );
+
+  pointer-events: none;
+}
+
+.proof-atmosphere::before,
+.proof-atmosphere::after {
+  content: "";
+
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  width: 520px;
+  height: 520px;
+
+  border: 1px solid rgba(242,106,33,.08);
+
+  border-radius: 50%;
+
+  transform:
+    translate(-50%, -50%);
+
+  animation:
+    proofFinalOrbit 18s linear infinite;
+}
+
+.proof-atmosphere::after {
+  width: 700px;
+  height: 700px;
+
+  border-color:
+    rgba(242,106,33,.04);
+
+  animation-duration: 28s;
+  animation-direction: reverse;
+}
+
+@keyframes proofFinalOrbit {
+
+  from {
+    transform:
+      translate(-50%, -50%)
+      rotate(0deg);
+  }
+
+  to {
+    transform:
+      translate(-50%, -50%)
+      rotate(360deg);
+  }
+
+}
+
+
+/* =========================================
+   TERMINAL
+========================================= */
+
+.proof-terminal {
+  position: relative;
+  z-index: 2;
+
+  width: min(680px, 88%);
+
+  border: 1px solid var(--orange-border);
+
+  background:
+    rgba(9,8,7,.91);
+
+  box-shadow:
+    0 50px 120px rgba(0,0,0,.65),
+    0 0 80px rgba(242,106,33,.08);
+
+  backdrop-filter: blur(20px);
+
+  overflow: hidden;
+
+  animation:
+    proofTerminalReveal 1s
+    cubic-bezier(.22,1,.36,1)
+    both;
+}
+
+@keyframes proofTerminalReveal {
+
+  from {
+    opacity: 0;
+    transform:
+      translateY(35px)
+      scale(.97);
+  }
+
+  to {
+    opacity: 1;
+    transform:
+      translateY(0)
+      scale(1);
+  }
+
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.terminal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 18px 22px;
+
+  border-bottom:
+    1px solid var(--border);
+
+  font-family:
+    "DM Mono",
+    monospace;
+
+  font-size: 9px;
+  letter-spacing: .14em;
+}
+
+.terminal-title {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+
+  color: var(--cream);
+}
+
+.terminal-dot {
+  width: 6px;
+  height: 6px;
+
+  border-radius: 50%;
+
+  background: var(--orange);
+
+  box-shadow:
+    0 0 10px var(--orange);
+
+  animation:
+    proofDotPulse 1.6s
+    ease-in-out infinite;
+}
+
+@keyframes proofDotPulse {
+
+  0%,100% {
+    opacity: .45;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+}
+
+.terminal-live {
+  color: var(--orange);
+}
+
+
+/* =========================================
+   STAGE ROWS
+========================================= */
+
+.proof-stage-row {
+  display: grid;
+
+  grid-template-columns:
+    170px 1fr;
+
+  gap: 30px;
+
+  align-items: center;
+
+  padding: 28px 24px;
+}
+
+.proof-stage-meta {
+  display: flex;
+  flex-direction: column;
+
+  gap: 7px;
+}
+
+.proof-stage-meta span {
+  color: var(--cream-muted);
+
+  font-family:
+    "DM Mono",
+    monospace;
+
+  font-size: 8px;
+
+  letter-spacing: .14em;
+}
+
+.proof-stage-meta strong {
+  color: var(--cream);
+
+  font-family:
+    "DM Mono",
+    monospace;
+
+  font-size: 11px;
+
+  letter-spacing: .04em;
+}
+
+
+/* =========================================
+   PRIVATE DATA
+========================================= */
+
+.proof-data {
+  display: flex;
+  flex-direction: column;
+
+  gap: 7px;
+}
+
+.redacted {
+  display: block;
+
+  width: fit-content;
+
+  color: var(--cream-muted);
+
+  font-family:
+    "DM Mono",
+    monospace;
+
+  font-size: 11px;
+
+  letter-spacing: .08em;
+
+  filter: blur(3px);
+
+  opacity: .45;
+
+  animation:
+    redactedPulse 3s
+    ease-in-out infinite;
+}
+
+.redacted:nth-child(2) {
+  animation-delay: .4s;
+}
+
+.redacted:nth-child(3) {
+  animation-delay: .8s;
+}
+
+@keyframes redactedPulse {
+
+  0%,100% {
+    opacity: .3;
+  }
+
+  50% {
+    opacity: .7;
+  }
+
+}
+
+
+/* =========================================
+   DIVIDERS
+========================================= */
+
+.proof-divider {
+  height: 1px;
+
+  margin: 0 24px;
+
+  background:
+    var(--border);
+
+  position: relative;
+}
+
+.proof-divider span {
+  position: absolute;
+
+  left: 0;
+  top: 0;
+
+  width: 0;
+  height: 1px;
+
+  background:
+    var(--orange);
+
+  box-shadow:
+    0 0 10px
+    rgba(242,106,33,.5);
+
+  animation:
+    proofLineGrow 2.8s
+    ease-out infinite;
+}
+
+@keyframes proofLineGrow {
+
+  0% {
+    width: 0;
+    opacity: 0;
+  }
+
+  30% {
+    opacity: 1;
+  }
+
+  70% {
+    width: 100%;
+    opacity: .5;
+  }
+
+  100% {
+    width: 100%;
+    opacity: 0;
+  }
+
+}
+
+
+/* =========================================
+   COMMITMENT
+========================================= */
+
+.commitment-value {
+  display: flex;
+  align-items: center;
+
+  gap: 3px;
+
+  font-family:
+    "DM Mono",
+    monospace;
+
+  font-size: 13px;
+
+  letter-spacing: .12em;
+}
+
+.hash-char {
+  color: var(--orange);
+
+  text-shadow:
+    0 0 12px
+    rgba(242,106,33,.35);
+
+  animation:
+    hashReveal 2.8s
+    ease-in-out infinite;
+}
+
+.hash-char:nth-child(2) {
+  animation-delay: .08s;
+}
+
+.hash-char:nth-child(3) {
+  animation-delay: .16s;
+}
+
+.hash-char:nth-child(4) {
+  animation-delay: .24s;
+}
+
+.hash-char:nth-child(6) {
+  animation-delay: .48s;
+}
+
+.hash-char:nth-child(7) {
+  animation-delay: .56s;
+}
+
+.hash-char:nth-child(8) {
+  animation-delay: .64s;
+}
+
+.hash-char:nth-child(9) {
+  animation-delay: .72s;
+}
+
+.hash-char.muted {
+  color: var(--cream-muted);
+  opacity: .35;
+}
+
+@keyframes hashReveal {
+
+  0%,100% {
+    opacity: .35;
+    transform: translateY(2px);
+  }
+
+  50% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+}
+
+
+/* =========================================
+   PROOF GENERATION
+========================================= */
+
+.proof-generation {
+  display: flex;
+  align-items: center;
+
+  gap: 13px;
+
+  color: var(--cream-muted);
+
+  font-family:
+    "DM Mono",
+    monospace;
+
+  font-size: 9px;
+
+  letter-spacing: .08em;
+}
+
+.proof-spinner {
+  width: 17px;
+  height: 17px;
+
+  border: 1px solid
+    rgba(242,106,33,.2);
+
+  border-top-color:
+    var(--orange);
+
+  border-right-color:
+    var(--orange);
+
+  border-radius: 50%;
+
+  animation:
+    proofSpin .9s
+    linear infinite;
+}
+
+@keyframes proofSpin {
+
+  to {
+    transform: rotate(360deg);
+  }
+
+}
+
+
+/* =========================================
+   VERIFICATION
+========================================= */
+
+.final-proof-row {
+  padding-top: 34px;
+  padding-bottom: 34px;
+}
+
+.verification-result {
+  display: flex;
+  align-items: center;
+
+  gap: 14px;
+}
+
+.verification-icon {
+  width: 34px;
+  height: 34px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid
+    var(--orange);
+
+  border-radius: 50%;
+
+  color: var(--orange);
+
+  box-shadow:
+    0 0 25px
+    rgba(242,106,33,.12);
+
+  animation:
+    verificationPulse 2s
+    ease-in-out infinite;
+}
+
+@keyframes verificationPulse {
+
+  0%,100% {
+    transform: scale(1);
+
+    box-shadow:
+      0 0 15px
+      rgba(242,106,33,.08);
+  }
+
+  50% {
+    transform: scale(1.08);
+
+    box-shadow:
+      0 0 35px
+      rgba(242,106,33,.18);
+  }
+
+}
+
+.verification-result > div:last-child {
+  display: flex;
+  flex-direction: column;
+
+  gap: 5px;
+}
+
+.verification-result strong {
+  color: var(--orange);
+
+  font-family:
+    "DM Mono",
+    monospace;
+
+  font-size: 14px;
+
+  letter-spacing: .08em;
+}
+
+.verification-result span {
+  color: var(--cream-muted);
+
+  font-family:
+    "DM Mono",
+    monospace;
+
+  font-size: 8px;
+
+  letter-spacing: .1em;
+}
+
+
+/* =========================================
+   TERMINAL FOOTER
+========================================= */
+
+.proof-terminal-footer {
+  display: flex;
+  justify-content: space-between;
+
+  padding: 17px 24px;
+
+  border-top:
+    1px solid var(--border);
+
+  background:
+    rgba(242,106,33,.025);
+
+  color: var(--cream-muted);
+
+  font-family:
+    "DM Mono",
+    monospace;
+
+  font-size: 8px;
+
+  letter-spacing: .14em;
+}
+
+.proof-terminal-footer strong {
+  color: var(--orange);
+}
+
+
+/* =========================================
+   FINAL THESIS
+========================================= */
+
+.proof-final-line {
+  position: relative;
+
+  max-width: 850px;
+
+  margin: 95px auto 0;
+
+  text-align: center;
+}
+
+.proof-final-line > span {
+  display: block;
+
+  width: 80px;
+  height: 1px;
+
+  margin: 0 auto 30px;
+
+  background:
+    var(--orange);
+
+  box-shadow:
+    0 0 15px
+    rgba(242,106,33,.45);
+}
+
+.proof-final-line p {
+  margin: 0;
+
+  color: var(--cream-muted);
+
+  font-size: 19px;
+
+  line-height: 1.7;
+}
+
+.proof-final-line strong {
+  color: var(--cream);
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 700px) {
+
+  .proof-final {
+    min-height: 570px;
+  }
+
+  .proof-terminal {
+    width: 92%;
+  }
+
+  .proof-stage-row {
+    grid-template-columns: 1fr;
+
+    gap: 17px;
+
+    padding: 23px 18px;
+  }
+
+  .proof-divider {
+    margin: 0 18px;
+  }
+
+  .commitment-value {
+    font-size: 11px;
+  }
+
+  .proof-generation {
+    font-size: 8px;
+  }
+
+  .proof-terminal-footer {
+    padding:
+      15px 18px;
+  }
+
+  .proof-final-line {
+    margin-top: 70px;
+  }
+
+  .proof-final-line p {
+    font-size: 17px;
+  }
+
+}
+
+
+/* =========================================
+   REDUCED MOTION
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .proof-atmosphere::before,
+  .proof-atmosphere::after,
+  .proof-terminal,
+  .terminal-dot,
+  .redacted,
+  .proof-divider span,
+  .hash-char,
+  .proof-spinner,
+  .verification-icon {
+
+    animation: none !important;
+
+  }
+
+}
