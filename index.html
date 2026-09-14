@@ -251,9 +251,7 @@
 
 
 
-      <!-- =========================================
-           PRIVACY TRANSFORMATION VISUAL
-      ========================================= -->
+      <!-- PRIVACY TRANSFORMATION VISUAL -->
 
       <div class="privacy-visual">
 
@@ -447,14 +445,19 @@
 
 
 
-    <!-- Proof flow -->
+    <!-- =========================================
+         INTERACTIVE PROOF FLOW
+    ========================================= -->
 
     <div class="proof-flow">
 
 
-      <!-- PRIVATE -->
+      <!-- PRIVATE INFORMATION -->
 
-      <div class="flow-stage private-stage">
+      <div
+        class="flow-stage private-stage"
+        data-stage="1"
+      >
 
         <div class="stage-number">
           01
@@ -485,18 +488,23 @@
 
 
         <div class="data-lines">
+
           <span></span>
           <span></span>
           <span></span>
+
         </div>
 
       </div>
 
 
 
-      <!-- CONNECTOR -->
+      <!-- CONNECTOR 01 → 02 -->
 
-      <div class="flow-connector">
+      <div
+        class="flow-connector"
+        data-connector="1"
+      >
 
         <div class="connector-line"></div>
 
@@ -508,9 +516,12 @@
 
 
 
-      <!-- PROOF -->
+      <!-- PROOF GENERATION -->
 
-      <div class="flow-stage proof-stage">
+      <div
+        class="flow-stage proof-stage"
+        data-stage="2"
+      >
 
         <div class="stage-number">
           02
@@ -541,18 +552,23 @@
 
 
         <div class="proof-orbit">
+
           <i></i>
           <i></i>
           <i></i>
+
         </div>
 
       </div>
 
 
 
-      <!-- CONNECTOR -->
+      <!-- CONNECTOR 02 → 03 -->
 
-      <div class="flow-connector">
+      <div
+        class="flow-connector"
+        data-connector="2"
+      >
 
         <div class="connector-line"></div>
 
@@ -564,9 +580,12 @@
 
 
 
-      <!-- VERIFY -->
+      <!-- VERIFIABLE RESULT -->
 
-      <div class="flow-stage verify-stage">
+      <div
+        class="flow-stage verify-stage"
+        data-stage="3"
+      >
 
         <div class="stage-number">
           03
@@ -716,7 +735,6 @@
   ========================================= -->
 
   <section class="proof-section" id="proof">
-
 
     <div class="proof-copy">
 
