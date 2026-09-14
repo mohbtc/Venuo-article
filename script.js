@@ -4,110 +4,174 @@ document.addEventListener("DOMContentLoaded", () => {
      HERO INTERACTION
   ========================================= */
 
-  const scene = document.querySelector(".transaction-scene");
-  const walletA = document.querySelector(".wallet-a");
-  const walletB = document.querySelector(".wallet-b");
-  const proofNode = document.querySelector(".proof-node");
+  const scene =
+    document.querySelector(".transaction-scene");
+
+  const walletA =
+    document.querySelector(".wallet-a");
+
+  const walletB =
+    document.querySelector(".wallet-b");
+
+  const proofNode =
+    document.querySelector(".proof-node");
+
 
   if (scene) {
 
     scene.addEventListener("mousemove", (e) => {
 
-      const rect = scene.getBoundingClientRect();
+      const rect =
+        scene.getBoundingClientRect();
 
-      const x = (e.clientX - rect.left) / rect.width - 0.5;
-      const y = (e.clientY - rect.top) / rect.height - 0.5;
+      const x =
+        (e.clientX - rect.left) /
+        rect.width -
+        0.5;
+
+      const y =
+        (e.clientY - rect.top) /
+        rect.height -
+        0.5;
+
 
       if (walletA) {
+
         walletA.style.transform =
           `translate(${x * 8}px, ${y * 6}px)`;
+
       }
+
 
       if (walletB) {
+
         walletB.style.transform =
           `translate(${x * -8}px, ${y * -6}px)`;
+
       }
 
+
       if (proofNode) {
+
         proofNode.style.transform =
           `translate(${x * 4}px, ${y * 4}px)`;
+
       }
 
     });
 
+
     scene.addEventListener("mouseleave", () => {
 
-      if (walletA) walletA.style.transform = "";
-      if (walletB) walletB.style.transform = "";
-      if (proofNode) proofNode.style.transform = "";
+      if (walletA) {
+        walletA.style.transform = "";
+      }
+
+      if (walletB) {
+        walletB.style.transform = "";
+      }
+
+      if (proofNode) {
+        proofNode.style.transform = "";
+      }
 
     });
 
   }
 
 
+
   /* =========================================
      SCROLL REVEALS
   ========================================= */
 
-  const revealItems = document.querySelectorAll(
-    ".problem-copy, .privacy-visual, .approach-intro, .flow-stage, .how-preview .step, .proof-copy, .proof-visual"
-  );
+  const revealItems =
+    document.querySelectorAll(
+      ".problem-copy, " +
+      ".privacy-visual, " +
+      ".approach-intro, " +
+      ".flow-stage, " +
+      ".how-preview .step, " +
+      ".proof-copy, " +
+      ".proof-visual"
+    );
 
-  const revealObserver = new IntersectionObserver(
-    (entries) => {
 
-      entries.forEach((entry) => {
+  if (
+    revealItems.length &&
+    "IntersectionObserver" in window
+  ) {
 
-        if (entry.isIntersecting) {
+    const revealObserver =
+      new IntersectionObserver(
+        (entries) => {
 
-          entry.target.classList.add("revealed");
-          revealObserver.unobserve(entry.target);
+          entries.forEach((entry) => {
 
+            if (entry.isIntersecting) {
+
+              entry.target.classList.add(
+                "revealed"
+              );
+
+              revealObserver.unobserve(
+                entry.target
+              );
+
+            }
+
+          });
+
+        },
+        {
+          threshold: 0.15,
+
+          rootMargin:
+            "0px 0px -60px 0px"
         }
+      );
 
-      });
 
-    },
-    {
-      threshold: 0.15,
-      rootMargin: "0px 0px -60px 0px"
-    }
-  );
+    revealItems.forEach((item) => {
 
-  revealItems.forEach((item) => {
+      item.classList.add("reveal");
 
-    item.classList.add("reveal");
-    revealObserver.observe(item);
+      revealObserver.observe(item);
 
-  });
+    });
+
+  }
+
 
 
   /* =========================================
      SECTION 02 STAGGER
   ========================================= */
 
-  document.querySelectorAll(".flow-stage").forEach((stage, index) => {
+  document
+    .querySelectorAll(".flow-stage")
+    .forEach((stage, index) => {
 
-    stage.style.transitionDelay =
-      `${index * 120}ms`;
+      stage.style.transitionDelay =
+        `${index * 120}ms`;
 
-  });
+    });
+
 
 
   /* =========================================
      HERO HASH MOTION
   ========================================= */
 
-  const hashes =
-    document.querySelectorAll(".hash");
+  document
+    .querySelectorAll(".hash")
+    .forEach((hash, index) => {
 
-  hashes.forEach((hash, index) => {
+      hash.style.animationDelay =
+        `${index * 1.1}s`;
 
-    hash.style.animationDelay =
-      `${index * 1.1}s`;
+    });
 
-  });
 
 
   /* =========================================
@@ -130,66 +194,107 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelector(".toggle-text");
 
 
-  if (privacyCard && privacyToggle) {
+  if (
+    privacyCard &&
+    privacyToggle
+  ) {
 
-    privacyToggle.addEventListener("click", () => {
+    privacyToggle.addEventListener(
+      "click",
+      () => {
 
-      const isProtected =
-        privacyCard.classList.contains("protected");
-
-
-      privacyCard.classList.add("protecting");
-
-
-      setTimeout(() => {
-
-        privacyCard.classList.remove("protecting");
-
-      }, 1000);
+        const isProtected =
+          privacyCard.classList.contains(
+            "protected"
+          );
 
 
-      if (!isProtected) {
-
-        privacyCard.classList.add("protected");
-
-
-        privacyStatus.innerHTML =
-          "<i></i> PRIVATE";
+        privacyCard.classList.add(
+          "protecting"
+        );
 
 
-        proofState.textContent =
-          "VALID";
+        setTimeout(() => {
+
+          privacyCard.classList.remove(
+            "protecting"
+          );
+
+        }, 1000);
 
 
-        toggleText.textContent =
-          "REVEAL TRANSACTION";
+        if (!isProtected) {
+
+          privacyCard.classList.add(
+            "protected"
+          );
 
 
-      } else {
+          if (privacyStatus) {
 
-        privacyCard.classList.remove("protected");
+            privacyStatus.innerHTML =
+              "<i></i> PRIVATE";
 
-
-        privacyStatus.innerHTML =
-          "<i></i> PUBLIC";
-
-
-        proofState.textContent =
-          "VISIBLE";
+          }
 
 
-        toggleText.textContent =
-          "PROTECT TRANSACTION";
+          if (proofState) {
+
+            proofState.textContent =
+              "VALID";
+
+          }
+
+
+          if (toggleText) {
+
+            toggleText.textContent =
+              "REVEAL TRANSACTION";
+
+          }
+
+        } else {
+
+          privacyCard.classList.remove(
+            "protected"
+          );
+
+
+          if (privacyStatus) {
+
+            privacyStatus.innerHTML =
+              "<i></i> PUBLIC";
+
+          }
+
+
+          if (proofState) {
+
+            proofState.textContent =
+              "VISIBLE";
+
+          }
+
+
+          if (toggleText) {
+
+            toggleText.textContent =
+              "PROTECT TRANSACTION";
+
+          }
+
+        }
 
       }
-
-    });
+    );
 
   }
 
 
+
   /* =========================================
-     SECTION 02 — PROOF PIPELINE
+     SECTION 02
+     PROOF PIPELINE
   ========================================= */
 
   const pipelineStages =
@@ -203,22 +308,27 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
   const approachBottom =
-    document.querySelector(".approach-bottom");
+    document.querySelector(
+      ".approach-bottom"
+    );
+
 
   let activeStage = 0;
 
 
   function activatePipeline(stageNumber) {
 
-    activeStage = stageNumber;
+    activeStage =
+      stageNumber;
 
-
-    /* Activate selected stage */
 
     pipelineStages.forEach((stage) => {
 
       const number =
-        Number(stage.dataset.stage);
+        Number(
+          stage.dataset.stage
+        );
+
 
       stage.classList.toggle(
         "pipeline-active",
@@ -228,22 +338,23 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 
-    /* Activate connector after selected stage */
+    pipelineConnectors.forEach(
+      (connector) => {
 
-    pipelineConnectors.forEach((connector) => {
-
-      const number =
-        Number(connector.dataset.connector);
-
-      connector.classList.toggle(
-        "signal-active",
-        number === stageNumber
-      );
-
-    });
+        const number =
+          Number(
+            connector.dataset.connector
+          );
 
 
-    /* Complete statement after stage 03 */
+        connector.classList.toggle(
+          "signal-active",
+          number === stageNumber
+        );
+
+      }
+    );
+
 
     if (
       approachBottom &&
@@ -265,34 +376,41 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
-  /* =========================================
-     STAGE CLICK / TAP
-  ========================================= */
 
   pipelineStages.forEach((stage) => {
 
-    stage.addEventListener("click", () => {
+    stage.addEventListener(
+      "click",
+      () => {
 
-      const number =
-        Number(stage.dataset.stage);
+        const number =
+          Number(
+            stage.dataset.stage
+          );
 
-      activatePipeline(number);
+        activatePipeline(number);
 
-    });
+      }
+    );
 
   });
 
 
+
   /* =========================================
      START SECTION 02
-     WHEN IT ENTERS VIEW
   ========================================= */
 
   const approachSection =
-    document.querySelector("#approach");
+    document.querySelector(
+      "#approach"
+    );
 
 
-  if (approachSection) {
+  if (
+    approachSection &&
+    "IntersectionObserver" in window
+  ) {
 
     const approachObserver =
       new IntersectionObserver(
@@ -300,7 +418,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
           entries.forEach((entry) => {
 
-            if (entry.isIntersecting) {
+            if (
+              entry.isIntersecting
+            ) {
 
               activatePipeline(1);
 
@@ -326,273 +446,438 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
+
+  /* =========================================
+     SECTION 03
+     TRANSACTION WALKTHROUGH
+  ========================================= */
+
+  const walkthroughSteps =
+    document.querySelectorAll(
+      ".walk-step"
+    );
+
+  const transactionWindow =
+    document.querySelector(
+      ".transaction-window"
+    );
+
+
+  function activateWalkthrough(
+    stepNumber
+  ) {
+
+    if (!transactionWindow) {
+      return;
+    }
+
+
+    walkthroughSteps.forEach(
+      (step) => {
+
+        step.classList.toggle(
+          "active",
+          Number(
+            step.dataset.step
+          ) === stepNumber
+        );
+
+      }
+    );
+
+
+    transactionWindow.className =
+      `transaction-window step-${stepNumber} active`;
+
+  }
+
+
+
+  /* =========================================
+     SECTION 03
+     MANUAL CONTROLS
+  ========================================= */
+
+  walkthroughSteps.forEach(
+    (step) => {
+
+      step.addEventListener(
+        "click",
+        () => {
+
+          const number =
+            Number(
+              step.dataset.step
+            );
+
+
+          activateWalkthrough(
+            number
+          );
+
+
+          clearInterval(
+            walkthroughTimer
+          );
+
+
+          walkthroughStarted =
+            true;
+
+        }
+      );
+
+    }
+  );
+
+
+
+  /* =========================================
+     SECTION 03
+     AUTO PROGRESSION
+  ========================================= */
+
+  let walkthroughTimer = null;
+
+  let walkthroughStarted =
+    false;
+
+
+  function startWalkthrough() {
+
+    if (
+      walkthroughStarted ||
+      !transactionWindow
+    ) {
+
+      return;
+
+    }
+
+
+    walkthroughStarted =
+      true;
+
+
+    let currentStep = 1;
+
+
+    activateWalkthrough(
+      currentStep
+    );
+
+
+    walkthroughTimer =
+      setInterval(() => {
+
+        currentStep++;
+
+
+        if (
+          currentStep > 4
+        ) {
+
+          currentStep = 1;
+
+        }
+
+
+        activateWalkthrough(
+          currentStep
+        );
+
+      }, 3200);
+
+  }
+
+
+
+  /* =========================================
+     START SECTION 03
+     WHEN IT ENTERS VIEW
+  ========================================= */
+
+  const howSection =
+    document.querySelector(
+      "#how"
+    );
+
+
+  if (
+    howSection &&
+    "IntersectionObserver" in window
+  ) {
+
+    const howObserver =
+      new IntersectionObserver(
+        (entries) => {
+
+          entries.forEach((entry) => {
+
+            if (
+              entry.isIntersecting
+            ) {
+
+              startWalkthrough();
+
+
+              howObserver.unobserve(
+                entry.target
+              );
+
+            }
+
+          });
+
+        },
+        {
+          threshold: 0.3
+        }
+      );
+
+
+    howObserver.observe(
+      howSection
+    );
+
+  }
+
+
+
   /* =========================================
      SMOOTH SCROLL
   ========================================= */
 
-  document.querySelectorAll(
-    'a[href^="#"]'
-  ).forEach((link) => {
+  document
+    .querySelectorAll(
+      'a[href^="#"]'
+    )
+    .forEach((link) => {
 
-    link.addEventListener("click", (e) => {
+      link.addEventListener(
+        "click",
+        (e) => {
 
-      const targetId =
-        link.getAttribute("href");
-
-
-      if (
-        !targetId ||
-        targetId === "#"
-      ) return;
-
-
-      const target =
-        document.querySelector(targetId);
+          const targetId =
+            link.getAttribute(
+              "href"
+            );
 
 
-      if (!target) return;
+          if (
+            !targetId ||
+            targetId === "#"
+          ) {
+
+            return;
+
+          }
 
 
-      e.preventDefault();
+          const target =
+            document.querySelector(
+              targetId
+            );
 
 
-      target.scrollIntoView({
-        behavior: "smooth",
-        block: "start"
-      });
+          if (!target) {
+
+            return;
+
+          }
+
+
+          e.preventDefault();
+
+
+          target.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+          });
+
+        }
+      );
 
     });
 
-  });
-
-});
-
-/* =========================================
-   SECTION 03 — TRANSACTION WALKTHROUGH
-========================================= */
-
-const walkthroughSteps =
-  document.querySelectorAll(".walk-step");
-
-const transactionWindow =
-  document.querySelector(".transaction-window");
-
-function activateWalkthrough(stepNumber) {
-
-  if (!transactionWindow) return;
-
-  walkthroughSteps.forEach((step) => {
-
-    step.classList.toggle(
-      "active",
-      Number(step.dataset.step) === stepNumber
-    );
-
-  });
-
-  transactionWindow.className =
-    `transaction-window step-${stepNumber} active`;
-
-}
 
 
-/* =========================================
-   STEP CLICK / TAP
-========================================= */
+  /* =========================================
+     SECTION 04
+     V4 PROOF LAYER
+     COMPLETELY ISOLATED
+  ========================================= */
 
-walkthroughSteps.forEach((step) => {
+  (() => {
 
-  step.addEventListener("click", () => {
-
-    const number =
-      Number(step.dataset.step);
-
-    activateWalkthrough(number);
-
-  });
-
-});
+    const v4Section =
+      document.querySelector(
+        "#proof.v4-proof-section"
+      );
 
 
-/* =========================================
-   AUTO PROGRESSION
-========================================= */
+    const v4Terminal =
+      document.querySelector(
+        "#proof .v4-proof-terminal"
+      );
 
-let walkthroughTimer;
-let walkthroughStarted = false;
 
-function startWalkthrough() {
+    const v4Rows =
+      document.querySelectorAll(
+        "#proof .v4-proof-row"
+      );
 
-  if (walkthroughStarted) return;
 
-  walkthroughStarted = true;
+    if (
+      !v4Section ||
+      !v4Terminal
+    ) {
 
-  let currentStep = 1;
+      return;
 
-  activateWalkthrough(currentStep);
-
-  walkthroughTimer = setInterval(() => {
-
-    currentStep++;
-
-    if (currentStep > 4) {
-      currentStep = 1;
     }
 
-    activateWalkthrough(currentStep);
 
-  }, 3200);
-
-}
+    let v4Activated =
+      false;
 
 
-/* =========================================
-   START WHEN SECTION ENTERS VIEW
-========================================= */
+    function activateV4() {
 
-const howSection =
-  document.querySelector("#how");
+      if (v4Activated) {
+        return;
+      }
 
-if (howSection) {
 
-  const howObserver =
-    new IntersectionObserver(
-      (entries) => {
+      v4Activated =
+        true;
 
-        entries.forEach((entry) => {
 
-          if (entry.isIntersecting) {
+      v4Terminal.classList.add(
+        "v4-proof-live"
+      );
 
-            startWalkthrough();
 
-            howObserver.unobserve(
-              entry.target
+      v4Rows.forEach(
+        (row, index) => {
+
+          row.style.setProperty(
+            "--v4-proof-delay",
+            `${index * 450}ms`
+          );
+
+
+          row.classList.add(
+            "v4-proof-row-active"
+          );
+
+        }
+      );
+
+    }
+
+
+
+    /* =========================================
+       V4 SCROLL ACTIVATION
+    ========================================= */
+
+    if (
+      "IntersectionObserver" in window
+    ) {
+
+      const v4Observer =
+        new IntersectionObserver(
+          (entries) => {
+
+            entries.forEach(
+              (entry) => {
+
+                if (
+                  entry.isIntersecting
+                ) {
+
+                  activateV4();
+
+
+                  v4Observer.unobserve(
+                    entry.target
+                  );
+
+                }
+
+              }
             );
 
+          },
+          {
+            threshold: 0.25
           }
-
-        });
-
-      },
-      {
-        threshold: 0.3
-      }
-    );
-
-  howObserver.observe(howSection);
-
-}
+        );
 
 
-/* =========================================
-   PAUSE AUTO FLOW ON INTERACTION
-========================================= */
+      v4Observer.observe(
+        v4Section
+      );
 
-walkthroughSteps.forEach((step) => {
+    } else {
 
-  step.addEventListener("click", () => {
+      activateV4();
 
-    clearInterval(walkthroughTimer);
-
-    walkthroughStarted = true;
-
-  });
-
-});
-
-/* =========================================
-   SECTION 04 — V4 PROOF LAYER
-   ISOLATED — DO NOT TOUCH SECTIONS 01–03
-========================================= */
-
-const v4ProofSection =
-  document.querySelector("#proof");
-
-const v4ProofTerminal =
-  document.querySelector(".v4-proof-terminal");
-
-const v4ProofRows =
-  document.querySelectorAll(".v4-proof-row");
-
-let v4ProofActivated = false;
-
-function activateV4ProofLayer() {
-  if (!v4ProofTerminal || v4ProofActivated) {
-    return;
-  }
-
-  v4ProofActivated = true;
-
-  v4ProofTerminal.classList.add("v4-proof-live");
-
-  v4ProofRows.forEach((row, index) => {
-    row.style.setProperty(
-      "--v4-proof-delay",
-      `${index * 450}ms`
-    );
-
-    row.classList.add("v4-proof-row-active");
-  });
-}
+    }
 
 
-/* ---------- SCROLL ACTIVATION ---------- */
 
-if (v4ProofSection) {
-  const v4ProofObserver =
-    new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            activateV4ProofLayer();
+    /* =========================================
+       V4 TERMINAL PARALLAX
+    ========================================= */
 
-            v4ProofObserver.unobserve(
-              entry.target
-            );
-          }
-        });
-      },
-      {
-        threshold: 0.35
-      }
-    );
+    v4Terminal.addEventListener(
+      "mousemove",
+      (e) => {
 
-  v4ProofObserver.observe(v4ProofSection);
-}
+        const rect =
+          v4Terminal.getBoundingClientRect();
 
 
-/* ---------- TERMINAL PARALLAX ---------- */
-
-if (v4ProofTerminal) {
-
-  v4ProofTerminal.addEventListener(
-    "mousemove",
-    (e) => {
-
-      const rect =
-        v4ProofTerminal.getBoundingClientRect();
-
-      const x =
-        (e.clientX - rect.left) /
+        const x =
+          (
+            e.clientX -
+            rect.left
+          ) /
           rect.width -
-        0.5;
+          0.5;
 
-      const y =
-        (e.clientY - rect.top) /
+
+        const y =
+          (
+            e.clientY -
+            rect.top
+          ) /
           rect.height -
-        0.5;
+          0.5;
 
-      v4ProofTerminal.style.transform =
-        `perspective(1200px)
-         rotateY(${x * 2}deg)
-         rotateX(${y * -2}deg)`;
-    }
-  );
 
-  v4ProofTerminal.addEventListener(
-    "mouseleave",
-    () => {
-      v4ProofTerminal.style.transform = "";
-    }
-  );
-}
+        v4Terminal.style.transform =
+          `perspective(1200px)
+           rotateY(${x * 2}deg)
+           rotateX(${y * -2}deg)`;
+
+      }
+    );
+
+
+    v4Terminal.addEventListener(
+      "mouseleave",
+      () => {
+
+        v4Terminal.style.transform =
+          "";
+
+      }
+    );
+
+
+  })();
+
+});
