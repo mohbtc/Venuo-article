@@ -648,7 +648,7 @@
 
 
 
-  <!-- =========================================
+    <!-- =========================================
        03 / HOW IT WORKS
   ========================================= -->
 
@@ -659,75 +659,316 @@
     </div>
 
 
-    <div class="steps">
+    <div class="how-intro">
+
+      <h2>
+        Follow one transaction
+        <span>through the system.</span>
+      </h2>
+
+      <p>
+        Instead of exposing everything onchain,
+        Venuo separates the information from the proof.
+      </p>
+
+    </div>
 
 
-      <div class="step">
+    <div class="transaction-walkthrough">
 
-        <span>01</span>
 
-        <h3>
-          Initiate
-        </h3>
+      <!-- =====================================
+           TRANSACTION VISUAL
+      ====================================== -->
 
-        <p>
-          Start a transaction without broadcasting unnecessary information.
-        </p>
+      <div class="walkthrough-visual">
+
+        <div class="walkthrough-grid"></div>
+
+
+        <div class="transaction-window">
+
+          <div class="window-top">
+
+            <span>
+              TRANSACTION FLOW
+            </span>
+
+            <span class="window-status">
+
+              <i></i>
+
+              LIVE
+
+            </span>
+
+          </div>
+
+
+          <!-- Transaction route -->
+
+          <div class="tx-route">
+
+
+            <div class="tx-wallet">
+
+              <span class="wallet-label">
+                FROM
+              </span>
+
+              <strong>
+                0x7A...91F2
+              </strong>
+
+            </div>
+
+
+            <div class="tx-signal">
+
+              <span class="signal-core"></span>
+
+            </div>
+
+
+            <div class="tx-wallet">
+
+              <span class="wallet-label">
+                TO
+              </span>
+
+              <strong>
+                0x42...C8D1
+              </strong>
+
+            </div>
+
+
+          </div>
+
+
+          <!-- Transaction data -->
+
+          <div class="tx-data">
+
+
+            <div>
+
+              <span>
+                AMOUNT
+              </span>
+
+              <strong class="tx-sensitive">
+                12.48 ETH
+              </strong>
+
+            </div>
+
+
+            <div>
+
+              <span>
+                COUNTERPARTY
+              </span>
+
+              <strong class="tx-sensitive">
+                0x93...71AC
+              </strong>
+
+            </div>
+
+
+            <div>
+
+              <span>
+                STATUS
+              </span>
+
+              <strong class="tx-state">
+                PRIVATE
+              </strong>
+
+            </div>
+
+
+          </div>
+
+
+          <!-- Proof state -->
+
+          <div class="tx-proof">
+
+            <span>
+              PROOF
+            </span>
+
+            <strong>
+
+              <i></i>
+
+              <span class="proof-state">
+                NOT GENERATED
+              </span>
+
+            </strong>
+
+          </div>
+
+        </div>
 
       </div>
 
 
 
-      <div class="step">
+      <!-- =====================================
+           WALKTHROUGH STEPS
+      ====================================== -->
 
-        <span>02</span>
-
-        <h3>
-          Prove
-        </h3>
-
-        <p>
-          Generate the cryptographic proof required to verify the action.
-        </p>
-
-      </div>
+      <div class="walkthrough-steps">
 
 
+        <!-- STEP 01 -->
 
-      <div class="step">
+        <button
+          class="walk-step active"
+          data-step="1"
+          type="button"
+        >
 
-        <span>03</span>
-
-        <h3>
-          Execute
-        </h3>
-
-        <p>
-          Move value while keeping sensitive transaction details private.
-        </p>
-
-      </div>
+          <span class="walk-number">
+            01
+          </span>
 
 
+          <div>
 
-      <div class="step">
+            <h3>
+              Initiate
+            </h3>
 
-        <span>04</span>
+            <p>
+              A transaction begins without
+              broadcasting unnecessary details.
+            </p>
 
-        <h3>
-          Verify
-        </h3>
+          </div>
 
-        <p>
-          Anyone who needs to verify the claim can do so without seeing everything.
-        </p>
+        </button>
+
+
+
+        <!-- STEP 02 -->
+
+        <button
+          class="walk-step"
+          data-step="2"
+          type="button"
+        >
+
+          <span class="walk-number">
+            02
+          </span>
+
+
+          <div>
+
+            <h3>
+              Prove
+            </h3>
+
+            <p>
+              The system generates a cryptographic
+              proof for what actually needs to be verified.
+            </p>
+
+          </div>
+
+        </button>
+
+
+
+        <!-- STEP 03 -->
+
+        <button
+          class="walk-step"
+          data-step="3"
+          type="button"
+        >
+
+          <span class="walk-number">
+            03
+          </span>
+
+
+          <div>
+
+            <h3>
+              Execute
+            </h3>
+
+            <p>
+              Value moves while sensitive
+              transaction information stays private.
+            </p>
+
+          </div>
+
+        </button>
+
+
+
+        <!-- STEP 04 -->
+
+        <button
+          class="walk-step"
+          data-step="4"
+          type="button"
+        >
+
+          <span class="walk-number">
+            04
+          </span>
+
+
+          <div>
+
+            <h3>
+              Verify
+            </h3>
+
+            <p>
+              The result can be verified without
+              exposing everything behind it.
+            </p>
+
+          </div>
+
+        </button>
+
 
       </div>
 
     </div>
 
-  </section>
 
+
+    <!-- =====================================
+         BOTTOM STATEMENT
+    ====================================== -->
+
+    <div class="how-bottom">
+
+      <span class="bottom-line"></span>
+
+      <p>
+        The transaction changes state.
+        <strong>
+          The sensitive information doesn't have to become public.
+        </strong>
+      </p>
+
+    </div>
+
+  </section>
 
 
   <!-- =========================================
