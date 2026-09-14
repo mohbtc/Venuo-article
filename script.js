@@ -501,134 +501,98 @@ walkthroughSteps.forEach((step) => {
 });
 
 /* =========================================
-   SECTION 04 — PROOF LAYER
+   SECTION 04 — V4 PROOF LAYER
+   ISOLATED — DO NOT TOUCH SECTIONS 01–03
 ========================================= */
 
-const proofSection =
+const v4ProofSection =
   document.querySelector("#proof");
 
-const proofTerminal =
-  document.querySelector(".proof-terminal");
+const v4ProofTerminal =
+  document.querySelector(".v4-proof-terminal");
 
-const proofRows =
-  document.querySelectorAll(
-    ".proof-stage-row"
-  );
+const v4ProofRows =
+  document.querySelectorAll(".v4-proof-row");
 
-let proofActivated = false;
+let v4ProofActivated = false;
 
-
-/* =========================================
-   ACTIVATE PROOF SEQUENCE
-========================================= */
-
-function activateProofLayer() {
-
-  if (!proofTerminal || proofActivated) {
+function activateV4ProofLayer() {
+  if (!v4ProofTerminal || v4ProofActivated) {
     return;
   }
 
-  proofActivated = true;
+  v4ProofActivated = true;
 
-  proofTerminal.classList.add(
-    "proof-live"
-  );
+  v4ProofTerminal.classList.add("v4-proof-live");
 
-
-  /* Sequential reveal */
-
-  proofRows.forEach((row, index) => {
-
+  v4ProofRows.forEach((row, index) => {
     row.style.setProperty(
-      "--proof-delay",
+      "--v4-proof-delay",
       `${index * 450}ms`
     );
 
-    row.classList.add(
-      "proof-row-active"
-    );
-
+    row.classList.add("v4-proof-row-active");
   });
-
 }
 
 
-/* =========================================
-   START WHEN SECTION ENTERS VIEW
-========================================= */
+/* ---------- SCROLL ACTIVATION ---------- */
 
-if (proofSection) {
-
-  const proofObserver =
+if (v4ProofSection) {
+  const v4ProofObserver =
     new IntersectionObserver(
       (entries) => {
-
         entries.forEach((entry) => {
-
           if (entry.isIntersecting) {
+            activateV4ProofLayer();
 
-            activateProofLayer();
-
-            proofObserver.unobserve(
+            v4ProofObserver.unobserve(
               entry.target
             );
-
           }
-
         });
-
       },
       {
         threshold: 0.35
       }
     );
 
-  proofObserver.observe(
-    proofSection
-  );
-
+  v4ProofObserver.observe(v4ProofSection);
 }
 
 
-/* =========================================
-   SUBTLE TERMINAL RESPONSE
-========================================= */
+/* ---------- TERMINAL PARALLAX ---------- */
 
-if (proofTerminal) {
+if (v4ProofTerminal) {
 
-  proofTerminal.addEventListener(
+  v4ProofTerminal.addEventListener(
     "mousemove",
     (e) => {
 
       const rect =
-        proofTerminal.getBoundingClientRect();
+        v4ProofTerminal.getBoundingClientRect();
 
       const x =
-        (e.clientX - rect.left)
-        / rect.width
-        - .5;
+        (e.clientX - rect.left) /
+          rect.width -
+        0.5;
 
       const y =
-        (e.clientY - rect.top)
-        / rect.height
-        - .5;
+        (e.clientY - rect.top) /
+          rect.height -
+        0.5;
 
-      proofTerminal.style.transform =
+      v4ProofTerminal.style.transform =
         `perspective(1200px)
          rotateY(${x * 2}deg)
          rotateX(${y * -2}deg)`;
-
     }
   );
 
-
-  proofTerminal.addEventListener(
+  v4ProofTerminal.addEventListener(
     "mouseleave",
     () => {
-
-      proofTerminal.style.transform = "";
-
+      v4ProofTerminal.style.transform = "";
     }
   );
-
 }
